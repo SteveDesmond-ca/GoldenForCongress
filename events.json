@@ -1,0 +1,13 @@
+[
+    {
+        "location": {
+            "lat": 42.87490738811161,
+            "lng": -76.9375991821289
+        },
+        "title": "test point",
+        "type": "video",
+        "date": "2017-09-25",
+        "description": "Vaughn's video",
+        "embedded_content": "https://www.youtube.com/embed/cWc9TXN7u0Y"
+    }
+]
