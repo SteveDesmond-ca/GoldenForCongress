@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Golden For Congress</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://unpkg.com/axios@0.16.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
+</head>
+
+<body>
+    <div id="gfc-admin" class="container-fluid">
+        <h1>Golden For Congress</h1>
+        <h2>Route</h2>
+        <button class="btn">Add</button>
+        <table class="table">
+            <thead class="thead-default">
+            <tr>
+                <th>Day</th>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="route in routes">
+                <td>{{route.day}}</td>
+                <td>{{route.date}}</td>
+                <td>{{route.description}}</td>
+                <td>
+                    <button class="btn"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript" src="admin.js"></script>
+</body>
+
+</html>
