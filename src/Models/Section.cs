@@ -2,7 +2,7 @@
 
 namespace GoldenForCongress.Models
 {
-    public class Route
+    public class Section
     {
         public Guid ID { get; set; }
         public int Day { get; set; }

@@ -11,6 +11,6 @@ namespace GoldenForCongress.Data
             Database.Migrate();
         }
 
-        public DbSet<Route> Routes { get; set; }
+        public DbSet<Section> RouteSections { get; set; }
     }
 }
