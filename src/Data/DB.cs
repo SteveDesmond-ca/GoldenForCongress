@@ -4,8 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GoldenForCongress.Data
 {
-    public class DB : IdentityDbContext
+    public sealed class DB : IdentityDbContext
     {
+        public DB(DbContextOptions options) : base(options)
+        {
+            Database.Migrate();
+        }
+
         public DbSet<Route> Routes { get; set; }
     }
 }
