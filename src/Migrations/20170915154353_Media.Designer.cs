@@ -12,9 +12,10 @@ using System;
 namespace GoldenForCongress.Migrations
 {
     [DbContext(typeof(DB))]
-    partial class DBModelSnapshot : ModelSnapshot
+    [Migration("20170915154353_Media")]
+    partial class Media
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,8 +32,6 @@ namespace GoldenForCongress.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("EmbeddedContent");
-
-                    b.Property<string>("Location");
 
                     b.Property<int>("MediaType");
 

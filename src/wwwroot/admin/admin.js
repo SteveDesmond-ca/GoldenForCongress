@@ -1,7 +1,14 @@
-﻿new Vue({
+Vue.config.devtools = true;
+
+new Vue({
     el: "#gfc-admin",
     data: {
-        routes: []
+        routes: [],
+        currentSection: {},
+        media: [],
+        currentMedia: {},
+        location: {},
+        action: 'menu'
     },
     methods: {
         displayDate: function (date) {
@@ -18,7 +25,16 @@
                             : 1;
             });
         },
-        updateRoute: function () {
+        sortedMedia: function (media) {
+            return media.sort(function (a, b) {
+                return a.date < b.date
+                    ? -1
+                    : a.date > b.date
+                        ? 1
+                        : 0;
+            });
+        },
+        getRoute: function () {
             var vthis = this;
             axios.get('/route')
                 .then(function (response) {
@@ -41,9 +57,36 @@
                         vthis.routes = vthis.sortedRoute(response.data);
                     });
             }
-        }
+        },
+
+        getMedia: function () {
+            var vthis = this;
+            axios.get('/media')
+                .then(function (response) {
+                    vthis.media = vthis.sortedMedia(response.data);
+                });
+        },
+        updateMediaCache: function () {
+            var vthis = this;
+            axios.get('/media/cache')
+                .then(function (response) {
+                    vthis.routes = vthis.sortedRoute(response.data);
+                    alert('Done!');
+                });
+        },
+
+        getLocation: function () {
+            var vthis = this;
+            axios.get('/ian.json')
+                .then(function (response) {
+                    vthis.location = response.data;
+                });
+        },
+
     },
     mounted: function () {
-        this.updateRoute();
+        this.getRoute();
+        this.getMedia();
+        this.getLocation();
     }
 });

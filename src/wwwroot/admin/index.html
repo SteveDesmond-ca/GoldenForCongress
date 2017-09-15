@@ -15,31 +15,88 @@
 <body>
     <div id="gfc-admin" class="container-fluid">
         <h1>Golden For Congress</h1>
-        <h2>Route</h2>
-        <button class="btn" v-on:click="updateRouteCache()">Regenerate Route</button>
-        <button class="btn">Add Section</button>
-        <table class="table">
-            <thead class="thead-default">
-                <tr>
-                    <th>Day</th>
-                    <th>Date</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody class="tbody-default">
-                <tr v-for="route in routes">
-                    <td>{{route.day}}</td>
-                    <td>{{displayDate(route.date)}}</td>
-                    <td>{{route.description}}</td>
-                    <td>
-                        <button class="btn"><i class="fa fa-pencil"></i></button>
-                        <button class="btn btn-danger" v-on:click="deleteSection(route)"><i class="fa fa-times"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <form>
+        <button class="btn btn-primary" v-on:click="action = 'track'">Start Tracking</button>
+        <button class="btn btn-secondary" v-on:click="action = 'route-list'">Manage Route</button>
+        <button class="btn btn-secondary" v-on:click="action = 'media-list'">Manage Media</button>
+
+        <div v-if="action == 'track'" class="container-fluid">
+            <h2>Track</h2>
+            <button class="btn btn-success">Start</button>
+            <div class="card">
+                <dl>
+                    <dt>Lat</dt>
+                    <dd>{{location.position.lat}}</dd>
+                    <dt>Lng</dt>
+                    <dd>{{location.position.lat}}</dd>
+                    <dt>Time</dt>
+                    <dd>{{location.time}}</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div v-if="action=='route-list'" class="container-fluid">
+            <h2>Route</h2>
+            <button class="btn btn-primary" v-on:click="updateRouteCache()">Regenerate Route</button>
+            <button class="btn btn-secondary">Add Section</button>
+            <table class="table">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Day</th>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-default">
+                    <tr v-for="route in routes">
+                        <td>{{route.day}}</td>
+                        <td>{{displayDate(route.date)}}</td>
+                        <td>{{route.description}}</td>
+                        <td>
+                            <button class="btn">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" v-on:click="deleteSection(route)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div v-if="action=='media-list'" class="container-fluid">
+            <h2>Media</h2>
+            <button class="btn btn-primary" v-on:click="updateMediaCache()">Publish Media</button>
+            <button class="btn btn-secondary">Add Media</button>
+            <table class="table">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Date</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-default">
+                    <tr v-for="m in media">
+                        <td>{{displayDate(m.date)}}</td>
+                        <td>{{m.title}}</td>
+                        <td>{{m.description}}</td>
+                        <td>
+                            <button class="btn">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" v-on:click="deleteMedia(m)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <form v-if="action == 'route-form'">
             <div class="form-group">
                 <label for="day">Day #</label>
                 <input id="day" name="day" type="number" class="form-control" />

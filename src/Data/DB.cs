@@ -12,5 +12,6 @@ namespace GoldenForCongress.Data
         }
 
         public DbSet<Section> RouteSections { get; set; }
+        public DbSet<Media> Media { get; set; }
     }
 }
