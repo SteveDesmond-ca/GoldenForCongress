@@ -29,7 +29,7 @@ namespace GoldenForCongress.Controllers
         public IEnumerable<Section> Cache()
         {
             var routes = _db.RouteSections;
-            var json = JArray.FromObject(routes, JsonSerializer.CreateDefault(new JsonSerializerSettings { ContractResolver = new ReadOnlyJsonContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() } }));
+            var json = JArray.FromObject(routes, Startup.SnakeCase);
             foreach (var item in json)
                 item["path"] = JArray.Parse(item["path"].Value<string>());
             System.IO.File.WriteAllText(Path.Combine(_env.WebRootPath, "route.json"), json.ToString());
@@ -45,7 +45,7 @@ namespace GoldenForCongress.Controllers
         [HttpPost]
         public async Task<IEnumerable<Section>> Index([FromBody]JObject routeJSON)
         {
-            var route = routeJSON.ToObject<Section>();
+            var route = routeJSON.ToObject<Section>(Startup.SnakeCase);
             if (route.ID == Guid.Empty)
                 await Add(route);
             else
