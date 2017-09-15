@@ -13,31 +13,38 @@
 </head>
 
 <body>
-    <div id="gfc-admin" class="container-fluid">
+    <div id="gfc-admin" class="container">
         <h1>Golden For Congress</h1>
-        <button class="btn btn-primary" v-on:click="action = 'track'">Start Tracking</button>
-        <button class="btn btn-secondary" v-on:click="action = 'route-list'">Manage Route</button>
-        <button class="btn btn-secondary" v-on:click="action = 'media-list'">Manage Media</button>
 
-        <div v-if="action == 'track'" class="container-fluid">
+        <section v-if="action == 'loading'" class="text-center">
+            <i class="fa-5x fa-spin fa fa-refresh"></i>
+        </section>
+
+        <section v-if="action == 'menu'">
+            <button class="btn btn-primary" v-on:click="action = 'track'">Start Tracking</button>
+            <button class="btn btn-secondary" v-on:click="action = 'route-list'">Manage Route</button>
+            <button class="btn btn-secondary" v-on:click="action = 'media-list'">Manage Media</button>
+        </section>
+
+        <section v-if="action == 'track'">
+            <a href="#" v-on:click="action = 'menu'"><< Back</a>
             <h2>Track</h2>
             <button class="btn btn-success">Start</button>
-            <div class="card">
-                <dl>
-                    <dt>Lat</dt>
-                    <dd>{{location.position.lat}}</dd>
-                    <dt>Lng</dt>
-                    <dd>{{location.position.lat}}</dd>
-                    <dt>Time</dt>
-                    <dd>{{location.time}}</dd>
-                </dl>
-            </div>
-        </div>
+            <dl>
+                <dt>Last updated</dt>
+                <dd>{{location.time}}</dd>
+                <dt>Lat</dt>
+                <dd>{{location.position.lat}}</dd>
+                <dt>Lng</dt>
+                <dd>{{location.position.lat}}</dd>
+            </dl>
+        </section>
 
-        <div v-if="action=='route-list'" class="container-fluid">
+        <section v-if="action=='route-list'">
+            <a href="#" v-on:click="action = 'menu'"><< Back</a>
             <h2>Route</h2>
             <button class="btn btn-primary" v-on:click="updateRouteCache()">Regenerate Route</button>
-            <button class="btn btn-secondary">Add Section</button>
+            <button class="btn btn-secondary" v-on:click="addSection()">Add Section</button>
             <table class="table">
                 <thead class="thead-default">
                     <tr>
@@ -48,31 +55,63 @@
                     </tr>
                 </thead>
                 <tbody class="tbody-default">
-                    <tr v-for="route in routes">
-                        <td>{{route.day}}</td>
-                        <td>{{displayDate(route.date)}}</td>
-                        <td>{{route.description}}</td>
+                    <tr v-for="section in route">
+                        <td>{{section.day}}</td>
+                        <td>{{displayDate(section.date)}}</td>
+                        <td>{{section.description}}</td>
                         <td>
-                            <button class="btn">
-                                <i class="fa fa-pencil"></i>
+                            <button class="btn btn-secondary" v-on:click="editSection(section)">
+                                <i class="fa fa-pencil"></i> Edit
                             </button>
-                            <button class="btn btn-danger" v-on:click="deleteSection(route)">
+                            <button class="btn btn-danger" v-on:click="deleteSection(section)">
                                 <i class="fa fa-times"></i>
                             </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </section>
 
-        <div v-if="action=='media-list'" class="container-fluid">
+        <form v-if="action == 'route-form'" v-on:submit.prevent="submitSection()">
+            <a href="#" v-on:click="action = 'route-list'"><< Back</a>
+            <h2>Add/Edit Section</h2>
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="day">Day #</label>
+                    <input id="day" name="day" type="number" class="form-control" v-model="current_section.day" />
+                </div>
+                <div class="form-group col-sm-5">
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="date" class="form-control" v-model="current_section.date" />
+                </div>
+                <div class="form-group col-sm-4">
+                    <label for="color">Line Color</label>
+                    <input id="color" name="color" type="color" class="form-control" v-model="current_section.color" style="height: 38px;" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input id="description" name="description" type="text" class="form-control" v-model="current_section.description" />
+            </div>
+            <div class="form-group">
+                <label for="path">Path</label>
+                <input id="path" name="path" type="text" class="form-control" v-model="current_section.path" />
+            </div>
+            <input type="hidden" v-model="current_section.id" />
+            <button class="btn btn-primary">Submit</button>
+        </form>
+
+        <section v-if="action=='media-list'">
+            <a href="#" v-on:click="action = 'menu'"><< Back</a>
             <h2>Media</h2>
             <button class="btn btn-primary" v-on:click="updateMediaCache()">Publish Media</button>
-            <button class="btn btn-secondary">Add Media</button>
+            <button class="btn btn-secondary" v-on:click="addMedia()">Add Media</button>
             <table class="table">
                 <thead class="thead-default">
                     <tr>
                         <th>Date</th>
+                        <th>Type</th>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -81,10 +120,11 @@
                 <tbody class="tbody-default">
                     <tr v-for="m in media">
                         <td>{{displayDate(m.date)}}</td>
+                        <td>{{displayMediaType(m.media_type)}}</td>
                         <td>{{m.title}}</td>
                         <td>{{m.description}}</td>
                         <td>
-                            <button class="btn">
+                            <button class="btn" v-on:click="editMedia(m)">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <button class="btn btn-danger" v-on:click="deleteMedia(m)">
@@ -94,32 +134,46 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
+        </section>
 
-        <form v-if="action == 'route-form'">
-            <div class="form-group">
-                <label for="day">Day #</label>
-                <input id="day" name="day" type="number" class="form-control" />
+        <form v-if="action == 'media-form'" v-on:submit.prevent="submitMedia()">
+            <a href="#" v-on:click="action = 'media-list'"><< Back</a>
+            <h2>Add/Edit Media</h2>
+            <div class="row">
+                <div class="form-group col-sm-6">
+                    <label for="date">Date</label>
+                    <input id="date" name="date" type="date" class="form-control" v-model="current_media.date" />
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="media_type">Media Type</label>
+                    <select id="media_type" name="media_type" class="form-control" v-model="current_media.media_type">
+                        <option value="0">Audio</option>
+                        <option value="1">Video</option>
+                        <option value="2">Image</option>
+                        <option value="3">Text</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
-                <label for="date">Date</label>
-                <input id="date" name="date" type="date" class="form-control" />
+                <label for="title">Title</label>
+                <input id="title" name="title" type="text" class="form-control" v-model="current_media.title" />
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
-                <input id="description" name="description" type="text" class="form-control" />
+                <input id="description" name="description" type="text" class="form-control" v-model="current_media.description" />
             </div>
             <div class="form-group">
-                <label for="color">Line Color</label>
-                <input id="color" name="color" type="color" class="form-control" />
+                <label for="embedded_content">Embed URL</label>
+                <input id="embedded_content" name="embedded_content" type="text" class="form-control" v-model="current_media.embedded_content" />
             </div>
             <div class="form-group">
-                <label for="path">Line Color</label>
-                <input id="path" name="path" type="text" class="form-control" disabled="disabled" />
+                <label for="location">Location</label>
+                <input id="location" name="location" type="text" class="form-control" v-model="current_media.location" />
             </div>
+            <button class="btn btn-primary">Submit</button>
         </form>
     </div>
+
     <script type="text/javascript" src="admin.js"></script>
 </body>
-
 </html>

@@ -3,16 +3,24 @@ Vue.config.devtools = true;
 new Vue({
     el: "#gfc-admin",
     data: {
-        routes: [],
-        currentSection: {},
+        route: [],
+        current_section: {},
         media: [],
-        currentMedia: {},
+        current_media: {},
         location: {},
-        action: 'menu'
+        action: 'loading'
     },
     methods: {
         displayDate: function (date) {
             return moment(date).calendar();
+        },
+        displayMediaType: function (type) {
+            switch (type) {
+                case 0: return 'Audio';
+                case 1: return 'Video';
+                case 2: return 'Image';
+                case 3: return 'Text';
+            }
         },
         sortedRoute: function (route) {
             return route.sort(function (a, b) {
@@ -38,23 +46,43 @@ new Vue({
             var vthis = this;
             axios.get('/route')
                 .then(function (response) {
-                    vthis.routes = vthis.sortedRoute(response.data);
+                    vthis.route = vthis.sortedRoute(response.data);
+                });
+        },
+        addSection: function () {
+            this.current_section = {};
+            this.action = 'route-form';
+        },
+        editSection: function (section) {
+            this.current_section = section;
+            this.action = 'route-form';
+        },
+        submitSection: function () {
+            this.action = 'loading';
+            var vthis = this;
+            axios.post('/route', vthis.current_section)
+                .then(function (response) {
+                    vthis.route = vthis.sortedRoute(response.data);
+                    vthis.action = 'route-list';
                 });
         },
         updateRouteCache: function () {
+            this.action = 'loading';
             var vthis = this;
             axios.get('/route/cache')
                 .then(function (response) {
-                    vthis.routes = vthis.sortedRoute(response.data);
-                    alert('Done!');
+                    vthis.route = vthis.sortedRoute(response.data);
+                    vthis.action = 'route-list';
                 });
         },
-        deleteSection: function (route) {
+        deleteSection: function (section) {
             if (confirm('Are you sure you want to delete this section?')) {
+                this.action = 'loading';
                 var vthis = this;
-                axios.delete('/route/' + route.id)
+                axios.delete('/route/' + section.id)
                     .then(function (response) {
-                        vthis.routes = vthis.sortedRoute(response.data);
+                        vthis.route = vthis.sortedRoute(response.data);
+                        vthis.action = 'route-list';
                     });
             }
         },
@@ -67,12 +95,42 @@ new Vue({
                 });
         },
         updateMediaCache: function () {
+            this.action = 'loading';
             var vthis = this;
             axios.get('/media/cache')
                 .then(function (response) {
-                    vthis.routes = vthis.sortedRoute(response.data);
-                    alert('Done!');
+                    vthis.media = vthis.sortedMedia(response.data);
+                    vthis.action = 'media-list';
+
                 });
+        },
+        addMedia: function () {
+            this.current_media = {};
+            this.action = 'media-form';
+        },
+        editMedia: function (media) {
+            this.current_media = media;
+            this.action = 'media-form';
+        },
+        submitMedia: function () {
+            this.action = 'loading';
+            var vthis = this;
+            axios.post('/media', vthis.current_media)
+                .then(function (response) {
+                    vthis.media = vthis.sortedMedia(response.data);
+                    vthis.action = 'media-list';
+                });
+        },
+        deleteMedia: function (media) {
+            if (confirm('Are you sure you want to delete this media?')) {
+                this.action = 'loading';
+                var vthis = this;
+                axios.delete('/delete/' + media.id)
+                    .then(function (response) {
+                        vthis.media = vthis.sortedMedia(response.data);
+                        vthis.action = 'media-list';
+                    });
+            }
         },
 
         getLocation: function () {
@@ -88,5 +146,6 @@ new Vue({
         this.getRoute();
         this.getMedia();
         this.getLocation();
+        this.action = 'menu';
     }
 });
