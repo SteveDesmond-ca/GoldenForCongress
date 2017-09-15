@@ -58,20 +58,20 @@ function showRoute() {
         });
 }
 
-function showEvents() {
-    axios.get('events.json')
+function showMedia() {
+    axios.get('media.json')
         .then(function (response) {
-            response.data.forEach(function (event) {
+            response.data.forEach(function (media) {
                 var info = new google.maps.InfoWindow({
-                    content: "<h5>" + event.title + "</h5>"
-                    + "<h6>" + event.date + "</h6>"
-                    + "<p>" + event.description + "</p>"
-                    + "<iframe src=\"" + event.embedded_content + "\" frameborder=\"0\"></iframe>"
+                    content: "<h5>" + media.title + "</h5>"
+                    + "<h6>" + media.date + "</h6>"
+                    + "<p>" + media.description + "</p>"
+                    + "<iframe src=\"" + media.embedded_content + "\" frameborder=\"0\"></iframe>"
                 });
                 var marker = new google.maps.Marker({
                     map: map,
-                    position: event.location,
-                    title: event.title,
+                    position: media.location,
+                    title: media.title,
                     icon: { fillColor: 'blue' }
                 });
                 marker.addListener('click', function (e) {
@@ -85,14 +85,21 @@ function showEvents() {
 function updatePosition() {
     axios.get('ian.json')
         .then(function (response) {
-            var position = response.data
+            var location = response.data;
+            var info = new google.maps.InfoWindow({
+                content: "<h6>Ian's location at " + location.time + "</h6>"
+            });
             var marker = new google.maps.Marker({
                 map: map,
                 icon: {
                     url: "running-poi.png"
                 },
-                position: position.location,
+                position: location.position,
                 title: "Ian's location at " + location.time
+            });
+            marker.addListener('click', function (e) {
+                info.open(map, marker);
+                info.setPosition(e.latLng, e.latLng);
             });
         });
 }
@@ -103,6 +110,7 @@ function watchIan() {
 }
 
 function showDrawingToolbox(snapToRoads) {
+    var directionsService = new google.maps.DirectionsService();
     var drawingManager = new google.maps.drawing.DrawingManager({
         map: map,
         drawingMode: google.maps.drawing.OverlayType.POLYLINE,
@@ -140,7 +148,6 @@ function initMap() {
     var drawing = false;
     var snapToRoads = false;
 
-    var directionsService = new google.maps.DirectionsService();
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 9,
         center: { "lat": 42.6, "lng": -78.1 }
@@ -148,7 +155,7 @@ function initMap() {
 
     showDistrictOverlay();
     showRoute();
-    showEvents();
+    showMedia();
     watchIan();
 
     if (drawing) {

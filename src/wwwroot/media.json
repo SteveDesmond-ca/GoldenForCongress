@@ -1,0 +1,14 @@
+[
+  {
+    "id": "b00c8c61-22b1-424a-914e-3b047fbddd32",
+    "date": "2017-09-25T00:00:00",
+    "location": {
+      "lat": 42.874907388111609,
+      "lng": -76.9375991821289
+    },
+    "title": "test point 2",
+    "description": "Vaughn's video",
+    "media_type": 1,
+    "embedded_content": "https://www.youtube.com/embed/cWc9TXN7u0Y"
+  }
+]
