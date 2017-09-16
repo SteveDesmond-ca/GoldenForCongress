@@ -37,7 +37,7 @@ function showDistrictOverlay() {
 }
 
 function showRoute() {
-    axios.get('route.json')
+    axios.get('route.json?' + new Date().getTime())
         .then(function (response) {
             response.data.forEach(function (day) {
                 var info = new google.maps.InfoWindow({
@@ -59,7 +59,7 @@ function showRoute() {
 }
 
 function showMedia() {
-    axios.get('media.json')
+    axios.get('media.json?' + new Date().getTime())
         .then(function (response) {
             response.data.forEach(function (media) {
                 var info = new google.maps.InfoWindow({
@@ -82,14 +82,16 @@ function showMedia() {
         });
 }
 
+var ian;
 function updatePosition() {
-    axios.get('ian.json')
+    axios.get('ian.json?' + new Date().getTime())
         .then(function (response) {
             var location = response.data;
             var info = new google.maps.InfoWindow({
                 content: "<h6>Ian's location at " + location.time + "</h6>"
             });
-            var marker = new google.maps.Marker({
+            ian.map = null;
+            ian = new google.maps.Marker({
                 map: map,
                 icon: {
                     url: "running-poi.png"
@@ -97,7 +99,7 @@ function updatePosition() {
                 position: location.position,
                 title: "Ian's location at " + location.time
             });
-            marker.addListener('click', function (e) {
+            ian.addListener('click', function (e) {
                 info.open(map, marker);
                 info.setPosition(e.latLng, e.latLng);
             });

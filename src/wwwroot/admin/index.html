@@ -29,14 +29,15 @@
         <section v-if="action == 'track'">
             <a href="#" v-on:click="action = 'menu'"><< Back</a>
             <h2>Track</h2>
-            <button class="btn btn-success">Start</button>
+            <button v-if="watch_id == null" class="btn btn-success" v-on:click="startTracking()">Start</button>
+            <button v-if="watch_id != null" class="btn btn-danger" v-on:click="stopTracking()">Stop</button>
             <dl>
                 <dt>Last updated</dt>
-                <dd>{{location.time}}</dd>
+                <dd>{{current_location.time}}</dd>
                 <dt>Lat</dt>
-                <dd>{{location.position.lat}}</dd>
+                <dd>{{current_location.position.lat}}</dd>
                 <dt>Lng</dt>
-                <dd>{{location.position.lat}}</dd>
+                <dd>{{current_location.position.lng}}</dd>
             </dl>
         </section>
 

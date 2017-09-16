@@ -6,10 +6,7 @@ using GoldenForCongress.Data;
 using GoldenForCongress.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Rest.Serialization;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
 
 namespace GoldenForCongress.Controllers
 {

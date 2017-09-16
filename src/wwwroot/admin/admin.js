@@ -7,12 +7,14 @@ new Vue({
         current_section: {},
         media: [],
         current_media: {},
-        location: {},
+        current_location: {},
+        watch_id: null,
         action: 'loading'
+
     },
     methods: {
         displayDate: function (date) {
-            return moment(date).calendar();
+            return moment(date).format('l');
         },
         displayMediaType: function (type) {
             switch (type) {
@@ -43,7 +45,7 @@ new Vue({
             });
         },
         getRoute: function () {
-            var vthis = this;
+            const vthis = this;
             axios.get('/route')
                 .then(function (response) {
                     vthis.route = vthis.sortedRoute(response.data);
@@ -59,7 +61,7 @@ new Vue({
         },
         submitSection: function () {
             this.action = 'loading';
-            var vthis = this;
+            const vthis = this;
             axios.post('/route', vthis.current_section)
                 .then(function (response) {
                     vthis.route = vthis.sortedRoute(response.data);
@@ -68,7 +70,7 @@ new Vue({
         },
         updateRouteCache: function () {
             this.action = 'loading';
-            var vthis = this;
+            const vthis = this;
             axios.get('/route/cache')
                 .then(function (response) {
                     vthis.route = vthis.sortedRoute(response.data);
@@ -78,7 +80,7 @@ new Vue({
         deleteSection: function (section) {
             if (confirm('Are you sure you want to delete this section?')) {
                 this.action = 'loading';
-                var vthis = this;
+                const vthis = this;
                 axios.delete('/route/' + section.id)
                     .then(function (response) {
                         vthis.route = vthis.sortedRoute(response.data);
@@ -88,7 +90,7 @@ new Vue({
         },
 
         getMedia: function () {
-            var vthis = this;
+            const vthis = this;
             axios.get('/media')
                 .then(function (response) {
                     vthis.media = vthis.sortedMedia(response.data);
@@ -96,7 +98,7 @@ new Vue({
         },
         updateMediaCache: function () {
             this.action = 'loading';
-            var vthis = this;
+            const vthis = this;
             axios.get('/media/cache')
                 .then(function (response) {
                     vthis.media = vthis.sortedMedia(response.data);
@@ -114,7 +116,7 @@ new Vue({
         },
         submitMedia: function () {
             this.action = 'loading';
-            var vthis = this;
+            const vthis = this;
             axios.post('/media', vthis.current_media)
                 .then(function (response) {
                     vthis.media = vthis.sortedMedia(response.data);
@@ -124,7 +126,7 @@ new Vue({
         deleteMedia: function (media) {
             if (confirm('Are you sure you want to delete this media?')) {
                 this.action = 'loading';
-                var vthis = this;
+                const vthis = this;
                 axios.delete('/delete/' + media.id)
                     .then(function (response) {
                         vthis.media = vthis.sortedMedia(response.data);
@@ -134,13 +136,41 @@ new Vue({
         },
 
         getLocation: function () {
-            var vthis = this;
+            const vthis = this;
             axios.get('/ian.json')
                 .then(function (response) {
-                    vthis.location = response.data;
+                    vthis.current_location = response.data;
                 });
         },
-
+        startTracking: function () {
+            this.watch_id = navigator.geolocation.watchPosition(function (position) {
+                this.current_location = {
+                    position: { lat: position.coords.latitude, lng: position.coords.longitude },
+                    time: moment(position.timestamp).format()
+                };
+                const vthis = this;
+                const location_to_send = this.current_location;
+                location_to_send.position = JSON.stringify(location_to_send.position);
+                axios.post('/location', location_to_send)
+                    .then(function (response) {
+                        vthis.media = vthis.sortedMedia(response.data);
+                        vthis.action = 'media-list';
+                    });
+            },
+                function (error) {
+                    console.log(error);
+                },
+                {
+                    enableHighAccuracy: true,
+                    timeout: 5000,
+                    maximumAge: 0
+                }
+            );
+        },
+        stopTracking: function () {
+            navigator.geolocation.clearWatch(this.watch_id);
+            this.watch_id = null;
+        }
     },
     mounted: function () {
         this.getRoute();

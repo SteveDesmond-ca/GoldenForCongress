@@ -1,4 +1,5 @@
-﻿using GoldenForCongress.Models;
+﻿using System.Threading.Tasks;
+using GoldenForCongress.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +12,14 @@ namespace GoldenForCongress.Data
             Database.Migrate();
         }
 
+        public DbSet<Location> Locations { get; set; }
         public DbSet<Section> RouteSections { get; set; }
         public DbSet<Media> Media { get; set; }
+
+        public async Task ClearLocationHistory()
+        {
+            await Database.ExecuteSqlCommandAsync("TRUNCATE TABLE Locations");
+            await SaveChangesAsync();
+        }
     }
 }
