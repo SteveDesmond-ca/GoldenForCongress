@@ -45,10 +45,10 @@ new Vue({
             });
         },
         getRoute: function () {
-            const vthis = this;
+            const app = this;
             axios.get('/route')
                 .then(function (response) {
-                    vthis.route = vthis.sortedRoute(response.data);
+                    app.route = app.sortedRoute(response.data);
                 });
         },
         addSection: function () {
@@ -60,49 +60,49 @@ new Vue({
             this.action = 'route-form';
         },
         submitSection: function () {
-            this.action = 'loading';
-            const vthis = this;
-            axios.post('/route', vthis.current_section)
+            const app = this;
+            app.action = 'loading';
+            axios.post('/route', app.current_section)
                 .then(function (response) {
-                    vthis.route = vthis.sortedRoute(response.data);
-                    vthis.action = 'route-list';
+                    app.route = app.sortedRoute(response.data);
+                    app.action = 'route-list';
                 });
         },
         updateRouteCache: function () {
-            this.action = 'loading';
-            const vthis = this;
+            const app = this;
+            app.action = 'loading';
             axios.get('/route/cache')
                 .then(function (response) {
-                    vthis.route = vthis.sortedRoute(response.data);
-                    vthis.action = 'route-list';
+                    app.route = app.sortedRoute(response.data);
+                    app.action = 'route-list';
                 });
         },
         deleteSection: function (section) {
             if (confirm('Are you sure you want to delete this section?')) {
-                this.action = 'loading';
-                const vthis = this;
+                const app = this;
+                app.action = 'loading';
                 axios.delete('/route/' + section.id)
                     .then(function (response) {
-                        vthis.route = vthis.sortedRoute(response.data);
-                        vthis.action = 'route-list';
+                        app.route = app.sortedRoute(response.data);
+                        app.action = 'route-list';
                     });
             }
         },
 
         getMedia: function () {
-            const vthis = this;
+            const app = this;
             axios.get('/media')
                 .then(function (response) {
-                    vthis.media = vthis.sortedMedia(response.data);
+                    app.media = app.sortedMedia(response.data);
                 });
         },
         updateMediaCache: function () {
-            this.action = 'loading';
-            const vthis = this;
+            const app = this;
+            app.action = 'loading';
             axios.get('/media/cache')
                 .then(function (response) {
-                    vthis.media = vthis.sortedMedia(response.data);
-                    vthis.action = 'media-list';
+                    app.media = app.sortedMedia(response.data);
+                    app.action = 'media-list';
 
                 });
         },
@@ -115,57 +115,57 @@ new Vue({
             this.action = 'media-form';
         },
         submitMedia: function () {
-            this.action = 'loading';
-            const vthis = this;
-            axios.post('/media', vthis.current_media)
+            const app = this;
+            app.action = 'loading';
+            axios.post('/media', app.current_media)
                 .then(function (response) {
-                    vthis.media = vthis.sortedMedia(response.data);
-                    vthis.action = 'media-list';
+                    app.media = app.sortedMedia(response.data);
+                    app.action = 'media-list';
                 });
         },
         deleteMedia: function (media) {
             if (confirm('Are you sure you want to delete this media?')) {
-                this.action = 'loading';
-                const vthis = this;
+                const app = this;
+                app.action = 'loading';
                 axios.delete('/delete/' + media.id)
                     .then(function (response) {
-                        vthis.media = vthis.sortedMedia(response.data);
-                        vthis.action = 'media-list';
+                        app.media = app.sortedMedia(response.data);
+                        app.action = 'media-list';
                     });
             }
         },
 
         getLocation: function () {
-            const vthis = this;
+            const app = this;
             axios.get('/ian.json')
                 .then(function (response) {
-                    vthis.current_location = response.data;
+                    app.current_location = response.data;
                 });
         },
         startTracking: function () {
-            this.watch_id = navigator.geolocation.watchPosition(function (position) {
-                this.current_location = {
-                    position: { lat: position.coords.latitude, lng: position.coords.longitude },
-                    time: moment(position.timestamp).format()
-                };
-                const vthis = this;
-                const location_to_send = this.current_location;
-                location_to_send.position = JSON.stringify(location_to_send.position);
-                axios.post('/location', location_to_send)
-                    .then(function (response) {
-                        vthis.media = vthis.sortedMedia(response.data);
-                        vthis.action = 'media-list';
-                    });
-            },
+            let last_updated = 0;
+            const app = this;
+            app.watch_id = navigator.geolocation.watchPosition(
+                function (position) {
+                    if (position.timestamp - last_updated < 30000) {
+                        return;
+                    } else {
+                        last_updated = position.timestamp;
+                    }
+                    const location_to_send = {
+                        position: JSON.stringify({ lat: position.coords.latitude, lng: position.coords.longitude }),
+                        time: moment(position.timestamp).format()
+                    };
+                    axios.post('/location', location_to_send)
+                        .then(function (response) {
+                            app.current_location = response.data;
+                            app.current_location.position = JSON.parse(response.data.position);
+                        });
+                },
                 function (error) {
                     console.log(error);
                 },
-                {
-                    enableHighAccuracy: true,
-                    timeout: 5000,
-                    maximumAge: 0
-                }
-            );
+                { enableHighAccuracy: true });
         },
         stopTracking: function () {
             navigator.geolocation.clearWatch(this.watch_id);

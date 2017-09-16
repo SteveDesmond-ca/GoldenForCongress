@@ -90,7 +90,9 @@ function updatePosition() {
             var info = new google.maps.InfoWindow({
                 content: "<h6>Ian's location at " + location.time + "</h6>"
             });
-            ian.map = null;
+            if (ian !== undefined) {
+                ian.setMap(null);
+            }
             ian = new google.maps.Marker({
                 map: map,
                 icon: {
@@ -100,7 +102,7 @@ function updatePosition() {
                 title: "Ian's location at " + location.time
             });
             ian.addListener('click', function (e) {
-                info.open(map, marker);
+                info.open(map, ian);
                 info.setPosition(e.latLng, e.latLng);
             });
         });

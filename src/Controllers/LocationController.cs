@@ -32,6 +32,7 @@ namespace GoldenForCongress.Controllers
         public async Task<Location> Index([FromBody]JObject locationJSON)
         {
             var location = locationJSON.ToObject<Location>(Startup.SnakeCase);
+            location.ID = Guid.NewGuid();
             await _db.AddAsync(location);
             await _db.SaveChangesAsync();
 
