@@ -7,8 +7,6 @@ new Vue({
         current_section: {},
         media: [],
         current_media: {},
-        current_location: {},
-        watch_id: null,
         action: 'loading'
 
     },
@@ -133,49 +131,11 @@ new Vue({
                         app.action = 'media-list';
                     });
             }
-        },
-
-        getLocation: function () {
-            const app = this;
-            axios.get('/ian.json')
-                .then(function (response) {
-                    app.current_location = response.data;
-                });
-        },
-        startTracking: function () {
-            let last_updated = 0;
-            const app = this;
-            app.watch_id = navigator.geolocation.watchPosition(
-                function (position) {
-                    if (position.timestamp - last_updated < 30000) {
-                        return;
-                    } else {
-                        last_updated = position.timestamp;
-                    }
-                    const location_to_send = {
-                        position: JSON.stringify({ lat: position.coords.latitude, lng: position.coords.longitude }),
-                        time: moment(position.timestamp).format()
-                    };
-                    axios.post('/location', location_to_send)
-                        .then(function (response) {
-                            app.current_location = response.data;
-                            app.current_location.position = JSON.parse(response.data.position);
-                        });
-                },
-                function (error) {
-                    console.log(error);
-                },
-                { enableHighAccuracy: true });
-        },
-        stopTracking: function () {
-            navigator.geolocation.clearWatch(this.watch_id);
-            this.watch_id = null;
         }
     },
     mounted: function () {
         this.getRoute();
         this.getMedia();
-        this.getLocation();
         this.action = 'menu';
     }
 });

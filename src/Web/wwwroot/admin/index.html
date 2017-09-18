@@ -6,10 +6,18 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <style type="text/css">
+        #route-map {
+            height: calc(100vh - 100px);
+            width: 100%;
+        }
+    </style>
+
     <script type="text/javascript" src="https://unpkg.com/axios@0.16.2/dist/axios.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/moment@2.18.1/min/moment.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vue-router@2.7.0/dist/vue-router.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vue2-google-maps@0.8.1/dist/vue-google-maps.js"></script>
 </head>
 
 <body>
@@ -21,24 +29,8 @@
         </section>
 
         <section v-if="action == 'menu'">
-            <button class="btn btn-primary" v-on:click="action = 'track'">Start Tracking</button>
             <button class="btn btn-secondary" v-on:click="action = 'route-list'">Manage Route</button>
             <button class="btn btn-secondary" v-on:click="action = 'media-list'">Manage Media</button>
-        </section>
-
-        <section v-if="action == 'track'">
-            <a href="#" v-on:click="action = 'menu'"><< Back</a>
-            <h2>Track</h2>
-            <button v-if="watch_id == null" class="btn btn-success" v-on:click="startTracking()">Start</button>
-            <button v-if="watch_id != null" class="btn btn-danger" v-on:click="stopTracking()">Stop</button>
-            <dl>
-                <dt>Last updated</dt>
-                <dd>{{current_location.time}}</dd>
-                <dt>Lat</dt>
-                <dd>{{current_location.position.lat}}</dd>
-                <dt>Lng</dt>
-                <dd>{{current_location.position.lng}}</dd>
-            </dl>
         </section>
 
         <section v-if="action=='route-list'">
@@ -99,6 +91,7 @@
                 <label for="path">Path</label>
                 <input id="path" name="path" type="text" class="form-control" v-model="current_section.path" />
             </div>
+            <div id="inner-route-map"></div>
             <input type="hidden" v-model="current_section.id" />
             <button class="btn btn-primary">Submit</button>
         </form>
@@ -173,8 +166,16 @@
             </div>
             <button class="btn btn-primary">Submit</button>
         </form>
+
     </div>
 
     <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="admin-map-utils.js"></script>
+    
+    <button class="btn" onclick="toggleRouteMap()">Toggle Route Map</button>
+<div id="route-map-wrapper">
+        <div id="route-map"></div>
+    </div>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BLzWoz9YN6LB5I0JfQzGZL4jXmqB8y4&libraries=drawing&callback=initRouteMap"></script>
 </body>
 </html>
