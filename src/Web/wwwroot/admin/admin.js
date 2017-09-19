@@ -5,6 +5,7 @@ new Vue({
     data: {
         route: [],
         current_section: {},
+        direction_service: new google.maps.DirectionsService(),
         media: [],
         current_media: {},
         action: 'loading'
@@ -56,6 +57,51 @@ new Vue({
         editSection: function (section) {
             this.current_section = section;
             this.action = 'route-form';
+        },
+        updatePath: function (url) {
+            const app = this;
+            app.current_section.path = '(loading...)';
+            const data_part = url.indexOf('data=');
+            if (data_part >= 0) {
+                const data_strings = url.substring(data_part).split('m2!1d');
+                const coord_strings = data_strings.splice(1, data_strings.length - 1);
+                const coords = [];
+                coord_strings.forEach(function (coordString) {
+                    const coord_string_split = coordString.split('!');
+                    const lat = parseFloat(coord_string_split[1].substring(2));
+                    const lng = parseFloat(coord_string_split[0]);
+                    coords.push({ lat: lat, lng: lng });
+                });
+
+                const waypoint_coords = coords.splice(1, coords.length - 2);
+                const waypoints = [];
+                waypoint_coords.forEach(function (waypoint) {
+                    waypoints.push({ location: waypoint, stopover: false });
+                });
+                const data = {
+                    origin: coords[0],
+                    destination: coords[coords.length - 1],
+                    waypoints: waypoints,
+                    optimizeWaypoints: true,
+                    travelMode: 'WALKING'
+                };
+                app.direction_service.route(data,
+                    function (response, status) {
+                        if (status == "OK") {
+                            const overview_path = response.routes[0].overview_path;
+                            const path = [];
+                            overview_path.forEach(function(point) {
+                                path.push({ lat: point.lat(), lng: point.lng() });
+                            })
+                            app.current_section.path = JSON.stringify(path);
+                        }
+                    });
+            } else {
+                axios.get('/route/from-gmaps/' + encodeURIComponent(url))
+                    .then(function (response) {
+                        app.current_section.path = JSON.stringify(response.data);
+                    });
+            }
         },
         submitSection: function () {
             const app = this;

@@ -1,4 +1,5 @@
-﻿using GoldenForCongress.Data;
+﻿using System.Net.Http;
+using GoldenForCongress.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -30,6 +31,7 @@ namespace GoldenForCongress
             services.AddScoped<IDesignTimeDbContextFactory<DB>>(s => new DBFactory(Configuration));
             services.AddDbContext<DB>(o => o.UseSqlServer(Configuration.GetConnectionString("DB")));
             services.AddIdentity<IdentityUser, IdentityRole>();
+            services.AddSingleton<HttpClient>();
             services.AddMvc().AddJsonOptions(o => o.SerializerSettings.ContractResolver = SnakeCaseResolver);
         }
 

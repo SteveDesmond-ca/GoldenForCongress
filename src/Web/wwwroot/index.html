@@ -38,7 +38,13 @@
             </div>
             <div id="events-app" class="col-sm-6">
                 <h2>Upcoming Events</h2>
-                <div ></div>
+                <div>
+                    <div class="card" v-for="m in media">
+                        <h3>{{m.title}}</h3>
+                        <h6>{{moment(m.date).format('L')}}</h6>
+                        <p>{{m.description}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
