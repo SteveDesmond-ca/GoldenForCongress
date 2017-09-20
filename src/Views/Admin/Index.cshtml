@@ -6,13 +6,6 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.0.0-beta/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.min.css" />
-    <style type="text/css">
-        #route-map {
-            height: calc(100vh - 100px);
-            width: 100%;
-        }
-    </style>
-
     <script type="text/javascript" src="https://unpkg.com/axios@0.16.2/dist/axios.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/moment@2.18.1/min/moment.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
@@ -90,7 +83,7 @@
                 <input id="path" name="path" type="text" class="form-control" v-model="current_section.path" />
             </div>
             <input type="hidden" v-model="current_section.id" />
-            <button class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
         <section v-if="action=='media-list'">
@@ -161,7 +154,8 @@
                 <label for="location">Location</label>
                 <input id="location" name="location" type="text" class="form-control" v-model="current_media.location" />
             </div>
-            <button class="btn btn-primary">Submit</button>
+            <input type="hidden" v-model="current_media.id" />
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
         <section v-if="action=='events-list'">
@@ -220,12 +214,13 @@
                 <label for="location">Location</label>
                 <input id="location" name="location" type="text" class="form-control" v-model="current_event.location" />
             </div>
-            <button class="btn btn-primary">Submit</button>
+            <input type="hidden" v-model="current_event.id" />
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
     </div>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5BLzWoz9YN6LB5I0JfQzGZL4jXmqB8y4"></script>
-    <script type="text/javascript" src="admin.js"></script>
+    <script type="text/javascript" src="/admin.js"></script>
 </body>
 </html>
