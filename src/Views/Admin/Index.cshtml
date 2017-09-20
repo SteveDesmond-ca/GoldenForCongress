@@ -19,7 +19,7 @@
             <i class="fa-5x fa-spin fa fa-refresh"></i>
         </section>
 
-        <section v-if="action == 'menu'">
+        <section v-if="action != 'loading'">
             <button class="btn btn-secondary" v-on:click="action = 'route-list'">Route</button>
             <button class="btn btn-secondary" v-on:click="action = 'media-list'">Media</button>
             <button class="btn btn-secondary" v-on:click="action = 'events-list'">Events</button>
