@@ -8,6 +8,8 @@ new Vue({
         direction_service: new google.maps.DirectionsService(),
         media: [],
         current_media: {},
+        events: [],
+        current_event: {},
         action: 'loading'
 
     },
@@ -23,19 +25,8 @@ new Vue({
                 case 3: return 'Text';
             }
         },
-        sortedRoute: function (route) {
-            return route.sort(function (a, b) {
-                return a.day < b.day
-                    ? -1
-                    : a.day > b.day
-                        ? 1
-                        : a.date < b.date
-                            ? -1
-                            : 1;
-            });
-        },
-        sortedMedia: function (media) {
-            return media.sort(function (a, b) {
+        sorted: function (list) {
+            return list.sort(function (a, b) {
                 return a.date < b.date
                     ? -1
                     : a.date > b.date
@@ -47,7 +38,7 @@ new Vue({
             const app = this;
             axios.get('/route')
                 .then(function (response) {
-                    app.route = app.sortedRoute(response.data);
+                    app.route = app.sorted(response.data);
                 });
         },
         addSection: function () {
@@ -61,6 +52,8 @@ new Vue({
         updatePath: function (url) {
             const app = this;
             app.current_section.path = '(loading...)';
+            if (url === undefined)
+                return;
             const data_part = url.indexOf('data=');
             if (data_part >= 0) {
                 const data_strings = url.substring(data_part).split('m2!1d');
@@ -90,7 +83,7 @@ new Vue({
                         if (status == "OK") {
                             const overview_path = response.routes[0].overview_path;
                             const path = [];
-                            overview_path.forEach(function(point) {
+                            overview_path.forEach(function (point) {
                                 path.push({ lat: point.lat(), lng: point.lng() });
                             })
                             app.current_section.path = JSON.stringify(path);
@@ -108,7 +101,7 @@ new Vue({
             app.action = 'loading';
             axios.post('/route', app.current_section)
                 .then(function (response) {
-                    app.route = app.sortedRoute(response.data);
+                    app.route = app.sorted(response.data);
                     app.action = 'route-list';
                 });
         },
@@ -117,7 +110,7 @@ new Vue({
             app.action = 'loading';
             axios.get('/route/cache')
                 .then(function (response) {
-                    app.route = app.sortedRoute(response.data);
+                    app.route = app.sorted(response.data);
                     app.action = 'route-list';
                 });
         },
@@ -127,7 +120,7 @@ new Vue({
                 app.action = 'loading';
                 axios.delete('/route/' + section.id)
                     .then(function (response) {
-                        app.route = app.sortedRoute(response.data);
+                        app.route = app.sorted(response.data);
                         app.action = 'route-list';
                     });
             }
@@ -137,7 +130,7 @@ new Vue({
             const app = this;
             axios.get('/media')
                 .then(function (response) {
-                    app.media = app.sortedMedia(response.data);
+                    app.media = app.sorted(response.data);
                 });
         },
         updateMediaCache: function () {
@@ -145,7 +138,7 @@ new Vue({
             app.action = 'loading';
             axios.get('/media/cache')
                 .then(function (response) {
-                    app.media = app.sortedMedia(response.data);
+                    app.media = app.sorted(response.data);
                     app.action = 'media-list';
 
                 });
@@ -163,7 +156,7 @@ new Vue({
             app.action = 'loading';
             axios.post('/media', app.current_media)
                 .then(function (response) {
-                    app.media = app.sortedMedia(response.data);
+                    app.media = app.sorted(response.data);
                     app.action = 'media-list';
                 });
         },
@@ -173,8 +166,54 @@ new Vue({
                 app.action = 'loading';
                 axios.delete('/delete/' + media.id)
                     .then(function (response) {
-                        app.media = app.sortedMedia(response.data);
+                        app.media = app.sorted(response.data);
                         app.action = 'media-list';
+                    });
+            }
+        },
+
+        getEvents: function () {
+            const app = this;
+            axios.get('/events')
+                .then(function (response) {
+                    app.events = app.sorted(response.data);
+                });
+        },
+        updateEventsCache: function () {
+            const app = this;
+            app.action = 'loading';
+            axios.get('/events/cache')
+                .then(function (response) {
+                    app.events = app.sorted(response.data);
+                    app.action = 'events-list';
+
+                });
+        },
+        addEvent: function () {
+            this.current_event = {};
+            this.action = 'event-form';
+        },
+        editEvent: function (event_info) {
+            this.current_event = event_info;
+            this.action = 'event-form';
+        },
+        submitEvent: function () {
+            const app = this;
+            app.action = 'loading';
+            axios.post('/events', app.current_event)
+                .then(function (response) {
+                    app.events = app.sorted(response.data);
+                    app.action = 'events-list';
+                });
+        },
+        deleteEvent: function (event_info) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                const app = this;
+                app.action = 'loading';
+                axios.delete('/delete/' + event_info.id)
+                    .then(function (response) {
+                        app.events = app.sorted(response.data);
+                        app.action = 'events-list';
                     });
             }
         }
@@ -182,6 +221,7 @@ new Vue({
     mounted: function () {
         this.getRoute();
         this.getMedia();
+        this.getEvents();
         this.action = 'menu';
     }
 });

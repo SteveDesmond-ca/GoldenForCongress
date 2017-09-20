@@ -15,6 +15,7 @@ namespace GoldenForCongress.Data
         public DbSet<Location> Locations { get; set; }
         public DbSet<Section> RouteSections { get; set; }
         public DbSet<Media> Media { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         public async Task ClearLocationHistory()
         {

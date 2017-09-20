@@ -11,15 +11,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
     <style type="text/css">
         #map {
-            height: calc(100vh - 200px);
+            height: calc(100vw / 1.6);
+            max-height: calc(100vh - 200px);
+            width: 100vw;
+        }
+
+        .video {
             width: 100%;
+            height: calc(50vw / 1.6);
+        }
+
+        @media (max-width: 575px) {
+            .video {
+                height: calc(100vw / 1.6);
+            }
         }
     </style>
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <img src="https://goldenforcongresstemporary.blog/wp-content/uploads/2017/08/GoldenforCongress_Logo_png-e1505534766900.png" />
+    <nav class="navbar navbar-expand-sm container">
+        <img class="float-left navbar-brand" src="https://goldenforcongress.com/wp-content/uploads/2017/08/GoldenforCongress_Logo_png-e1505534766900.png" />
+        <h1>Live Tracking</h1>
+        <div class="float-right">
+            <a href="https://www.goldenforcongress.com/">Back to Main Site</a>
+        </div>
     </nav>
     <div class="container-fluid">
         <div id="map"></div>
@@ -33,16 +49,17 @@
                     <h3>{{m.title}}</h3>
                     <h6>{{moment(m.date).format('l')}}</h6>
                     <p>{{m.description}}</p>
-                    <iframe v-bind:src="m.embedded_content" style="width: 100%; height: calc(50vw / 1.6);"></iframe>
+                    <iframe class="video" v-bind:src="m.embedded_content"></iframe>
                 </div>
             </div>
             <div id="events-app" class="col-sm-6">
                 <h2>Upcoming Events</h2>
                 <div>
-                    <div class="card" v-for="m in media">
-                        <h3>{{m.title}}</h3>
-                        <h6>{{moment(m.date).format('L')}}</h6>
-                        <p>{{m.description}}</p>
+                    <div class="card" v-for="e in events">
+                        <h3>{{e.title}}</h3>
+                        <h6>{{moment(e.date).format('L')}}</h6>
+                        <p>{{e.description}}</p>
+                        <a href="{{e.link}}">More Info</a>
                     </div>
                 </div>
             </div>

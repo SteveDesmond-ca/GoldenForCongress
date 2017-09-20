@@ -47,5 +47,6 @@ new Vue({
     },
     mounted: function() {
         this.getMedia();
+        this.getEvents();
     }
 });

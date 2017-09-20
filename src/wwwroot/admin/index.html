@@ -27,8 +27,9 @@
         </section>
 
         <section v-if="action == 'menu'">
-            <button class="btn btn-secondary" v-on:click="action = 'route-list'">Manage Route</button>
-            <button class="btn btn-secondary" v-on:click="action = 'media-list'">Manage Media</button>
+            <button class="btn btn-secondary" v-on:click="action = 'route-list'">Route</button>
+            <button class="btn btn-secondary" v-on:click="action = 'media-list'">Media</button>
+            <button class="btn btn-secondary" v-on:click="action = 'events-list'">Events</button>
         </section>
 
         <section v-if="action=='route-list'">
@@ -39,7 +40,6 @@
             <table class="table">
                 <thead class="thead-default">
                     <tr>
-                        <th>Day</th>
                         <th>Date</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -47,7 +47,6 @@
                 </thead>
                 <tbody class="tbody-default">
                     <tr v-for="section in route">
-                        <td>{{section.day}}</td>
                         <td>{{displayDate(section.date)}}</td>
                         <td>{{section.description}}</td>
                         <td>
@@ -67,15 +66,11 @@
             <a href="#" v-on:click="action = 'route-list'"><< Back</a>
             <h2>Add/Edit Section</h2>
             <div class="row">
-                <div class="form-group col-sm-3">
-                    <label for="day">Day #</label>
-                    <input id="day" name="day" type="number" class="form-control" v-model="current_section.day" />
-                </div>
-                <div class="form-group col-sm-5">
+                <div class="form-group col-sm-6">
                     <label for="date">Date</label>
                     <input id="date" name="date" type="date" class="form-control" v-model="current_section.date" />
                 </div>
-                <div class="form-group col-sm-4">
+                <div class="form-group col-sm-6">
                     <label for="color">Line Color</label>
                     <input id="color" name="color" type="color" class="form-control" v-model="current_section.color" style="height: 38px;" />
                 </div>
@@ -165,6 +160,65 @@
             <div class="form-group">
                 <label for="location">Location</label>
                 <input id="location" name="location" type="text" class="form-control" v-model="current_media.location" />
+            </div>
+            <button class="btn btn-primary">Submit</button>
+        </form>
+
+        <section v-if="action=='events-list'">
+            <a href="#" v-on:click="action = 'menu'"><< Back</a>
+            <h2>Events</h2>
+            <button class="btn btn-primary" v-on:click="updateEventsCache()">Publish Events</button>
+            <button class="btn btn-secondary" v-on:click="addEvent()">Add Event</button>
+            <table class="table">
+                <thead class="thead-default">
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody-default">
+                    <tr v-for="e in events">
+                        <td>{{displayDate(e.date)}}</td>
+                        <td>{{e.title}}</td>
+                        <td>{{e.description}}</td>
+                        <td>
+                            <button class="btn" v-on:click="editEvent(e)">
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                            <button class="btn btn-danger" v-on:click="deleteEvent(e)">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <form v-if="action == 'event-form'" v-on:submit.prevent="submitEvent()">
+            <a href="#" v-on:click="action = 'events-list'"><< Back</a>
+            <h2>Add/Edit Event</h2>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input id="date" name="date" type="date" class="form-control" v-model="current_event.date" />
+            </div>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input id="title" name="title" type="text" class="form-control" v-model="current_event.title" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input id="description" name="description" type="text" class="form-control" v-model="current_event.description" />
+            </div>
+            <div class="form-group">
+                <label for="link">Link</label>
+                <input id="link" name="link" type="text" class="form-control" v-model="current_event.link" />
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input id="location" name="location" type="text" class="form-control" v-model="current_event.location" />
             </div>
             <button class="btn btn-primary">Submit</button>
         </form>
