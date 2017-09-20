@@ -1,7 +1,7 @@
 Vue.config.devtools = true;
 
 new Vue({
-    el: "#gfc-admin",
+    el: '#gfc-admin',
     data: {
         route: [],
         current_section: {},
@@ -52,8 +52,10 @@ new Vue({
         updatePath: function (url) {
             const app = this;
             app.current_section.path = '(loading...)';
-            if (url === undefined)
+            if (url === undefined) {
+                app.current_section.path = 'Error: URL not defined';
                 return;
+            }
             const data_part = url.indexOf('data=');
             if (data_part >= 0) {
                 const data_strings = url.substring(data_part).split('m2!1d');
@@ -80,7 +82,7 @@ new Vue({
                 };
                 app.direction_service.route(data,
                     function (response, status) {
-                        if (status == "OK") {
+                        if (status === 'OK') {
                             const overview_path = response.routes[0].overview_path;
                             const path = [];
                             overview_path.forEach(function (point) {
@@ -90,10 +92,7 @@ new Vue({
                         }
                     });
             } else {
-                axios.get('/route/from-gmaps/' + encodeURIComponent(url))
-                    .then(function (response) {
-                        app.current_section.path = JSON.stringify(response.data);
-                    });
+                app.current_section.path = 'Error: URL has no data';
             }
         },
         submitSection: function () {
@@ -118,7 +117,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this section?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/route/' + section.id)
+                axios.delete('/route/delete/' + section.id)
                     .then(function (response) {
                         app.route = app.sorted(response.data);
                         app.action = 'route-list';
@@ -164,7 +163,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this media?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/delete/' + media.id)
+                axios.delete('/media/delete/' + media.id)
                     .then(function (response) {
                         app.media = app.sorted(response.data);
                         app.action = 'media-list';
@@ -210,7 +209,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this event?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/delete/' + event_info.id)
+                axios.delete('/events/delete/' + event_info.id)
                     .then(function (response) {
                         app.events = app.sorted(response.data);
                         app.action = 'events-list';

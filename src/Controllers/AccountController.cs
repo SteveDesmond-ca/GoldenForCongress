@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoldenForCongress.Controllers
 {
-    [Route("account")]
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -16,10 +15,9 @@ namespace GoldenForCongress.Controllers
             _userManager = userManager;
         }
 
-        [HttpGet("login")]
         public IActionResult Login() => View();
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Login(string username, string password)
         {
             var signInResult = await _signInManager.PasswordSignInAsync(username, password, true, false);
@@ -29,10 +27,9 @@ namespace GoldenForCongress.Controllers
         }
 
 
-        [HttpGet("register")]
         public IActionResult Register() => View();
 
-        [HttpPost("register")]
+        [HttpPost]
         public async Task<IActionResult> Register(string username, string password)
         {
             var registerResult = await _userManager.CreateAsync(new IdentityUser(username), password);
@@ -41,7 +38,6 @@ namespace GoldenForCongress.Controllers
             return View();
         }
 
-        [HttpGet("logout")]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

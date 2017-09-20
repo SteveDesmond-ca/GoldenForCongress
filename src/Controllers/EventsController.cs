@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GoldenForCongress.Controllers
 {
-    [Route("events")]
+    [Authorize(Roles = "Admin")]
     public class EventsController : Controller
     {
         private readonly DB _db;
@@ -23,7 +23,6 @@ namespace GoldenForCongress.Controllers
             _env = env;
         }
 
-        [HttpGet("cache")]
         public IEnumerable<Event> Cache()
         {
             var media = _db.Events;
@@ -34,11 +33,7 @@ namespace GoldenForCongress.Controllers
             return media;
         }
 
-        [HttpGet]
-        public IEnumerable<Event> Index()
-        {
-            return _db.Events;
-        }
+        public IEnumerable<Event> Index() => _db.Events;
 
         [HttpPost]
         public async Task<IEnumerable<Event>> Index([FromBody]JObject eventsJSON)
@@ -64,7 +59,7 @@ namespace GoldenForCongress.Controllers
             await _db.SaveChangesAsync();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public async Task<IEnumerable<Event>> Delete(Guid id)
         {
             var eventInfo = await _db.Events.FindAsync(id);

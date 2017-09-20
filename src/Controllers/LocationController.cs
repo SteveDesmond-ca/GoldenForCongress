@@ -11,7 +11,7 @@ using Newtonsoft.Json.Linq;
 
 namespace GoldenForCongress.Controllers
 {
-    [Route("location")]
+    [Authorize(Roles = "Admin")]
     public class LocationController : Controller
     {
         private readonly DB _db;
@@ -23,11 +23,7 @@ namespace GoldenForCongress.Controllers
             _env = env;
         }
 
-        [HttpGet]
-        public IEnumerable<Location> Index()
-        {
-            return _db.Locations;
-        }
+        public IEnumerable<Location> Index() => _db.Locations;
 
         [HttpPost]
         public async Task<Location> Index([FromBody]JObject locationJSON)
