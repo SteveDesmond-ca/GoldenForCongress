@@ -3,10 +3,32 @@ Vue.config.devtools = true;
 new Vue({
     el: '#feed-app',
     data: {
+        route: [],
         media: [],
         events: []
     },
     methods: {
+        getRoute: function() {
+            const app = this;
+            axios.get('route.json')
+                .then(function(response) {
+                    app.route = app.sortedRoute(response.data);
+                });
+        },
+        sortedRoute: function(route) {
+            return route
+                .filter(function (section) {
+                    return moment(section.date) > moment();
+                })
+                .sort(function (a, b) {
+                return a.date < b.date
+                    ? -1
+                    : a.date > b.date
+                    ? 1
+                    : 0;
+            });
+        },
+
         getMedia: function() {
             const app = this;
             axios.get('media.json')
@@ -46,6 +68,7 @@ new Vue({
         }
     },
     mounted: function() {
+        this.getRoute();
         this.getMedia();
         this.getEvents();
     }

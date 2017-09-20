@@ -18,7 +18,7 @@
 
         .video {
             width: 100%;
-            height: calc(50vw / 1.6);
+            height: calc(33vw / 1.6);
         }
 
         @media (max-width: 575px) {
@@ -43,7 +43,14 @@
     </div>
     <div id="feed-app" class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-4">
+                <h2>The Route</h2>
+                <div class="card" v-for="section in route">
+                    <h4>{{moment(section.date).format('l')}}</h4>
+                    <h5>{{section.description}}</h5>
+                </div>
+            </div>
+            <div class="col-sm-4">
                 <h2>Recent Media</h2>
                 <div class="card" v-for="m in media">
                     <h3>{{m.title}}</h3>
@@ -52,7 +59,7 @@
                     <iframe class="video" v-bind:src="m.embedded_content"></iframe>
                 </div>
             </div>
-            <div id="events-app" class="col-sm-6">
+            <div class="col-sm-4">
                 <h2>Upcoming Events</h2>
                 <div>
                     <div class="card" v-for="e in events">
