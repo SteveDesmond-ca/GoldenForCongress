@@ -63,7 +63,7 @@ function showMedia() {
             response.data.forEach(function (media) {
                 var info = new google.maps.InfoWindow({
                     content: "<h5>" + media.title + "</h5>"
-                    + "<h6>" + moment(media.date).format('L') + "</h6>"
+                    + "<h6>" + moment(media.date).format('l LT') + "</h6>"
                     + "<p>" + media.description + "</p>"
                     + "<iframe src=\"" + media.embedded_content + "\" frameborder=\"0\"></iframe>"
                 });
@@ -86,7 +86,7 @@ function showEvents() {
             response.data.forEach(function (event_info) {
                 var info = new google.maps.InfoWindow({
                     content: "<h5>" + event_info.title + "</h5>"
-                    + "<h6>" + moment(event_info.date).format('L') + "</h6>"
+                    + "<h6>" + moment(event_info.date).format('l LT') + "</h6>"
                     + "<p>" + event_info.description + "</p>"
                     + "<a href=\"" + event_info.link + "\">More Info</a>"
                 });
@@ -110,7 +110,7 @@ function updatePosition() {
             var location = response.data;
             var info = new google.maps.InfoWindow({
                 content: "<h5>Ian's Location</h5>"
-                    + "<h6>" + moment(location.time).format('L') + "</h6>"
+                + "<h6>" + moment(location.time).format('l LT') + "</h6>"
             });
             if (ian !== undefined) {
                 ian.setMap(null);

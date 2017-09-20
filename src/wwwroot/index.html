@@ -57,7 +57,7 @@
                 <div>
                     <div class="card" v-for="e in events">
                         <h3>{{e.title}}</h3>
-                        <h6>{{moment(e.date).format('L')}}</h6>
+                        <h6>{{moment(e.date).format('l LT')}}</h6>
                         <p>{{e.description}}</p>
                         <a href="{{e.link}}">More Info</a>
                     </div>
