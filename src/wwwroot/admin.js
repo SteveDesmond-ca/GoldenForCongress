@@ -3,9 +3,10 @@ Vue.config.devtools = true;
 new Vue({
     el: '#gfc-admin',
     data: {
+        direction_service: new google.maps.DirectionsService(),
+        geocoding_service: new google.maps.Geocoder(),
         route: [],
         current_section: {},
-        direction_service: new google.maps.DirectionsService(),
         media: [],
         current_media: {},
         events: [],
@@ -42,7 +43,7 @@ new Vue({
                 });
         },
         addSection: function () {
-            this.current_section = {};
+            this.current_section = { path: '' };
             this.action = 'route-form';
         },
         editSection: function (section) {
@@ -117,7 +118,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this section?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/route/delete/' + section.id)
+                axios.delete(`/route/delete/${section.id}`)
                     .then(function (response) {
                         app.route = app.sorted(response.data);
                         app.action = 'route-list';
@@ -143,12 +144,25 @@ new Vue({
                 });
         },
         addMedia: function () {
-            this.current_media = {};
+            this.current_media = { location: '' };
             this.action = 'media-form';
         },
         editMedia: function (media) {
             this.current_media = media;
             this.action = 'media-form';
+        },
+        getMediaCoords: function (address) {
+            const app = this;
+            app.current_media.location = '(loading...)';
+            app.geocoding_service.geocode({
+                address: address
+            },
+                function (results, status) {
+                    if (status === 'OK') {
+                        app.current_media.location = `{ lat: ${results[0].geometry.location.lat()}, lng: ${results[0].geometry.location.lng()} }`;
+                    }
+                }
+            );
         },
         submitMedia: function () {
             const app = this;
@@ -163,7 +177,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this media?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/media/delete/' + media.id)
+                axios.delete(`/media/delete/${media.id}`)
                     .then(function (response) {
                         app.media = app.sorted(response.data);
                         app.action = 'media-list';
@@ -189,12 +203,25 @@ new Vue({
                 });
         },
         addEvent: function () {
-            this.current_event = {};
+            this.current_event = { location: '' };
             this.action = 'event-form';
         },
         editEvent: function (event_info) {
             this.current_event = event_info;
             this.action = 'event-form';
+        },
+        getEventCoords: function (address) {
+            const app = this;
+            app.current_event.location = '(loading...)';
+            app.geocoding_service.geocode({
+                address: address
+            },
+                function (results, status) {
+                    if (status === 'OK') {
+                        app.current_event.location = `{ lat: ${results[0].geometry.location.lat()}, lng: ${results[0].geometry.location.lng()} }`;
+                    }
+                }
+            );
         },
         submitEvent: function () {
             const app = this;
@@ -209,7 +236,7 @@ new Vue({
             if (confirm('Are you sure you want to delete this event?')) {
                 const app = this;
                 app.action = 'loading';
-                axios.delete('/events/delete/' + event_info.id)
+                axios.delete(`/events/delete/${event_info.id}`)
                     .then(function (response) {
                         app.events = app.sorted(response.data);
                         app.action = 'events-list';
