@@ -1,5 +1,7 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using GoldenForCongress.Data;
+using GoldenForCongress.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -28,15 +30,19 @@ namespace GoldenForCongress
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IDesignTimeDbContextFactory<DB>>(s => new DBFactory(Configuration));
+            var dbFactory = new DBFactory(Configuration);
+            services.AddScoped<IDesignTimeDbContextFactory<DB>>(s => dbFactory);
             services.AddDbContext<DB>(o => o.UseSqlServer(Configuration.GetConnectionString("DB")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<DB>()
-                .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<DB>();
 
+            services.AddMvc()
+                .AddJsonOptions(o => o.SerializerSettings.ContractResolver = SnakeCaseResolver);
+
+            services.AddSingleton<Func<DB>>(s => () => dbFactory.CreateDbContext(new string[] { }));
             services.AddSingleton<HttpClient>();
-            services.AddMvc().AddJsonOptions(o => o.SerializerSettings.ContractResolver = SnakeCaseResolver);
+            services.AddSingleton<SPOTAPI>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,14 +50,12 @@ namespace GoldenForCongress
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
+
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseAuthentication();
-            app.UseMvc(routes => {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
+
+            app.UseMvc(routes => routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}"));
         }
     }
 }

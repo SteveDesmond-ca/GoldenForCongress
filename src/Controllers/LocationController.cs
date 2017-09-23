@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using GoldenForCongress.Data;
 using GoldenForCongress.Models;
+using GoldenForCongress.Services;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 
 namespace GoldenForCongress.Controllers
 {
@@ -15,29 +12,33 @@ namespace GoldenForCongress.Controllers
     public class LocationController : Controller
     {
         private readonly DB _db;
-        private readonly IHostingEnvironment _env;
+        private readonly SPOTAPI _spotAPI;
 
-        public LocationController(DB db, IHostingEnvironment env)
+        public LocationController(DB db, SPOTAPI spotAPI)
         {
             _db = db;
-            _env = env;
+            _spotAPI = spotAPI;
         }
 
         public IEnumerable<Location> Index() => _db.Locations;
 
+        public bool Status() => _spotAPI.Running;
+
         [HttpPost]
-        public async Task<Location> Index([FromBody]JObject locationJSON)
+        public bool StartTracking()
         {
-            var location = locationJSON.ToObject<Location>(Startup.SnakeCase);
-            location.ID = Guid.NewGuid();
-            await _db.AddAsync(location);
-            await _db.SaveChangesAsync();
+#pragma warning disable 4014
+            if(!_spotAPI.Running)
+                _spotAPI.Start();
+#pragma warning restore 4014
+            return _spotAPI.Running;
+        }
 
-            var json = JObject.FromObject(location, Startup.SnakeCase);
-            json["position"] = JObject.Parse(json["position"].Value<string>());
-            System.IO.File.WriteAllText(Path.Combine(_env.WebRootPath, "ian.json"), json.ToString());
-
-            return location;
+        [HttpPost]
+        public bool StopTracking()
+        {
+            _spotAPI.Stop();
+            return _spotAPI.Running;
         }
 
         [HttpDelete]

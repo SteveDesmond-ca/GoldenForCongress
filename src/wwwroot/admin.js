@@ -11,8 +11,8 @@ new Vue({
         current_media: {},
         events: [],
         current_event: {},
+        tracking: false,
         action: 'loading'
-
     },
     methods: {
         displayDate: function (date) {
@@ -242,12 +242,28 @@ new Vue({
                         app.action = 'events-list';
                     });
             }
+        },
+
+        getTracking: function () {
+            const app = this;
+            axios.get('/location/status')
+                .then(function (response) {
+                    app.tracking = response.data;
+                });
+        },
+        toggleTracking: function() {
+            const app = this;
+            axios.post(`/location/${app.tracking ? 'stop' : 'start'}tracking`)
+                .then(function (response) {
+                    app.tracking = response.data;
+                });
         }
     },
     mounted: function () {
         this.getRoute();
         this.getMedia();
         this.getEvents();
+        this.getTracking();
         this.action = 'menu';
     }
 });

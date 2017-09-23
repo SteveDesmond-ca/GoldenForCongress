@@ -23,6 +23,8 @@
             <button class="btn btn-secondary" v-on:click="action = 'route-list'">Route</button>
             <button class="btn btn-secondary" v-on:click="action = 'media-list'">Media</button>
             <button class="btn btn-secondary" v-on:click="action = 'events-list'">Events</button>
+
+            <button class="btn" v-bind:class="{ 'btn-success': tracking, 'btn-danger': !tracking }" v-on:click="toggleTracking()">{{tracking ? 'Tracking Started' : 'Tracking Stopped'}}</button>
             <button class="btn btn-secondary float-right" v-on:click="location = '/Account/Logout'">Logout</button>
         </section>
 
