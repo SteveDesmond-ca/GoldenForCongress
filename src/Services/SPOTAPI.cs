@@ -49,12 +49,12 @@ namespace GoldenForCongress.Services
                     var result = await _httpClient.GetStringAsync(_url);
                     _lastChecked = now;
 
-                    var response = JObject.Parse(result)["response"];
+                    var message = JObject.Parse(result)["response"]["feedMessageResponse"]["messages"]["message"];
                     var location = new Location
                     {
                         ID = Guid.NewGuid(),
-                        Time = DateTime.FromFileTimeUtc(response["unixTime"].Value<long>()),
-                        Position = $"{{ lat: {response["latitude"]}, lng: {response["longitude"]} }}"
+                        Time = DateTime.FromFileTimeUtc(message["unixTime"].Value<long>()),
+                        Position = $"{{ lat: {message["latitude"]}, lng: {message["longitude"]} }}"
                     };
                     await db.AddAsync(location);
                     await db.SaveChangesAsync();
