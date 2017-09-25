@@ -28,8 +28,8 @@
                 <hr />
                 <h2>The Route</h2>
                 <div class="card bg-light" v-for="section in route">
-                    <h5><span v-bind:style="{ color: section.color }">&mdash;</span> {{section.description}}</h5>
-                    <h6>{{moment(section.date).format('l')}}</h6>
+                    <h5>{{section.description}}</h5>
+                    <h6><span v-bind:style="{ color: section.color }">&mdash;</span> {{moment(section.date).format('l')}}</h6>
                 </div>
             </div>
             <div class="col-sm-4">
