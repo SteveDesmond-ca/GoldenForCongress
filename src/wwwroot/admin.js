@@ -25,6 +25,7 @@ new Vue({
                 case 2: return 'Image';
                 case 3: return 'Text';
             }
+            return 'Unknown';
         },
         sorted: function (list) {
             return list.sort(function (a, b) {

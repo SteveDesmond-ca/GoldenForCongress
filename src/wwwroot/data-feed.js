@@ -45,6 +45,15 @@ new Vue({
                     : 0;
             });
         },
+        displayMediaType: function (type) {
+            switch (type) {
+            case 0: return 'audio';
+            case 1: return 'video';
+            case 2: return 'image';
+            case 3: return 'text';
+            }
+            return 'unknown';
+        },
 
         getEvents: function () {
             const app = this;
