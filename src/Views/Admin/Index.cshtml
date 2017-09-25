@@ -46,8 +46,11 @@
                         <td>{{displayDate(section.date)}}</td>
                         <td>{{section.description}}</td>
                         <td>
+                            <button class="btn btn-primary" v-on:click="location = '/route/gpx/' + section.id">
+                                <i class="fa fa-download"></i>
+                            </button>
                             <button class="btn btn-secondary" v-on:click="editSection(section)">
-                                <i class="fa fa-pencil"></i> Edit
+                                <i class="fa fa-pencil"></i>
                             </button>
                             <button class="btn btn-danger" v-on:click="deleteSection(section)">
                                 <i class="fa fa-times"></i>

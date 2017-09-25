@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using GoldenForCongress.Data;
 using GoldenForCongress.Models;
@@ -71,6 +72,17 @@ namespace GoldenForCongress.Controllers
             _db.Remove(route);
             await _db.SaveChangesAsync();
             return _db.RouteSections;
+        }
+
+        public async Task<IActionResult> GPX(Guid id)
+        {
+            var section = await _db.RouteSections.FindAsync(id);
+            var gpx = Services.GPX.Transform(section);
+            var contents = Encoding.UTF8.GetBytes(gpx.ToString());
+            return new FileContentResult(contents, "application/gpx+xml")
+            {
+                FileDownloadName = section.Date.ToString("yyyy-MM-dd") + ".gpx"
+            };
         }
     }
 }
