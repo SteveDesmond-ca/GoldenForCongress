@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar navbar-expand-sm container justify-content-between text-center">
         <img class="float-left navbar-brand" src="https://goldenforcongress.com/wp-content/uploads/2017/08/GoldenforCongress_Logo_png-e1505534766900.png" />
-        <h2 class="d-none d-sm-block">Live Tracking</h2>
+        <h2 class="d-none d-sm-block">NY23 On Foot</h2>
         <a href="https://www.goldenforcongress.com/">Back <span class="d-none d-md-block">to Main Site</span></a>
     </nav>
     <div class="container-fluid">
@@ -28,15 +28,15 @@
                 <hr />
                 <h2>The Route</h2>
                 <div class="card bg-light" v-for="section in route">
-                    <h4>{{moment(section.date).format('l')}}</h4>
                     <h5>{{section.description}}</h5>
+                    <h6>{{moment(section.date).format('l')}}</h6>
                 </div>
             </div>
             <div class="col-sm-4">
                 <hr />
                 <h2>Recent Media</h2>
-                <div class="card bg-light" v-for="m in media">
-                    <h3>{{m.title}}</h3>
+                <div class="card bg-li5ht" v-for="m in media">
+                    <h5>{{m.title}}</h5>
                     <h6>{{moment(m.date).format('l')}}</h6>
                     <p>{{m.description}}</p>
                     <iframe class="video" v-bind:src="m.embedded_content"></iframe>
@@ -47,7 +47,7 @@
                 <h2>Upcoming Events</h2>
                 <div>
                     <div class="card bg-light" v-for="e in events">
-                        <h3>{{e.title}}</h3>
+                        <h5>{{e.title}}</h5>
                         <h6>{{moment(e.date).format('l LT')}}</h6>
                         <p>{{e.description}}</p>
                         <a href="{{e.link}}">More Info</a>
