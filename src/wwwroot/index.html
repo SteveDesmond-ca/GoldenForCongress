@@ -38,7 +38,7 @@
                 <div class="card bg-light" v-for="m in media">
                     <h5>{{m.title}}</h5>
                     <h6>{{moment(m.date).format('l')}}</h6>
-                    <p>{{m.description}}</p>
+                    <p v-if="m.description">{{m.description}}</p>
                     <iframe class="video" v-bind:src="m.embedded_content"></iframe>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <div class="card bg-light" v-for="e in events">
                         <h5>{{e.title}}</h5>
                         <h6>{{moment(e.date).format('l LT')}}</h6>
-                        <p>{{e.description}}</p>
+                        <p v-if="e.description">{{e.description}}</p>
                         <a v-if="e.link" href="{{e.link}}">More Info</a>
                     </div>
                 </div>

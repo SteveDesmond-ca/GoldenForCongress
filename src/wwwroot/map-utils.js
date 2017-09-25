@@ -59,7 +59,7 @@ function showMedia() {
                 const info = new google.maps.InfoWindow({
                     content: '<h5>' + media.title + '</h5>'
                     + '<h6>' + moment(media.date).format('l LT') + '</h6>'
-                    + '<p>' + media.description + '</p>'
+                    + (media.description ? '<p>' + media.description + '</p>' : '')
                     + '<iframe src=\'' + media.embedded_content + '\' frameborder=\'0\'></iframe>'
                 });
                 const marker = new google.maps.Marker({
@@ -85,8 +85,8 @@ function showEvents() {
                 const info = new google.maps.InfoWindow({
                     content: '<h5>' + event_info.title + '</h5>'
                     + '<h6>' + moment(event_info.date).format('l LT') + '</h6>'
-                    + '<p>' + event_info.description + '</p>'
-                    + '<a href=\'' + event_info.link + '\'>More Info</a>'
+                    + (event_info.description ? '<p>' + event_info.description + '</p>' : '')
+                    + (event_info.link ? '<a href=\'' + event_info.link + '\'>More Info</a>' : '')
                 });
                 const marker = new google.maps.Marker({
                     map: map,
