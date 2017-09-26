@@ -7,10 +7,10 @@
         color: #4c4c4c;
     }
 
-    #menu-primary li a:hover {
-        color: #ef4836;
-        text-decoration: none;
-    }
+        #menu-primary li a:hover {
+            color: #ef4836;
+            text-decoration: none;
+        }
 
 .donate-button a {
     font-size: 14px;
@@ -27,6 +27,21 @@
     border: 0;
     border-radius: 0;
     padding: 7px 18px;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #menu-primary li {
+        padding: 0 7px;
+    }
+
+    nav {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+        nav a {
+            font-size: 12px !important;
+        }
 }
 
 #map {
