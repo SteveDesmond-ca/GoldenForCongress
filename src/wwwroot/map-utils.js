@@ -119,7 +119,8 @@ function updatePosition() {
                     url: 'running-poi-green.png'
                 },
                 position: location.position,
-                title: 'Ian\'s location at ' + location.time
+                title: 'Ian\'s location at ' + location.time,
+                zIndex: 1000
             });
             ian.addListener('click', function (e) {
                 info.open(map, ian);
