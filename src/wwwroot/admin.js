@@ -18,6 +18,9 @@ new Vue({
         displayDate: function (date) {
             return moment(date).format('l');
         },
+        displayDateTime: function (date) {
+            return moment(date).format('l LT');
+        },
         displayMediaType: function (type) {
             switch (type) {
                 case 0: return 'Audio';

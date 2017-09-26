@@ -109,7 +109,7 @@
                 </thead>
                 <tbody class="tbody-default">
                     <tr v-for="m in media">
-                        <td>{{displayDate(m.date)}}</td>
+                        <td>{{displayDateTime(m.date)}}</td>
                         <td>{{displayMediaType(m.media_type)}}</td>
                         <td>{{m.title}}</td>
                         <td>{{m.description}}</td>
@@ -186,7 +186,7 @@
                 </thead>
                 <tbody class="tbody-default">
                     <tr v-for="e in events">
-                        <td>{{displayDate(e.date)}}</td>
+                        <td>{{displayDateTime(e.date)}}</td>
                         <td>{{e.title}}</td>
                         <td>{{e.description}}</td>
                         <td>
