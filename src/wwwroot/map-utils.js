@@ -2,10 +2,10 @@ var map = {};
 
 function displayMediaType(type) {
     switch (type) {
-    case 0: return 'audio';
-    case 1: return 'video';
-    case 2: return 'image';
-    case 3: return 'text';
+        case 0: return 'audio';
+        case 1: return 'video';
+        case 2: return 'image';
+        case 3: return 'text';
     }
     return 'unknown';
 }
@@ -82,21 +82,28 @@ function showEvents() {
     axios.get('events.json?' + new Date().getTime())
         .then(function (response) {
             response.data.forEach(function (event_info) {
-                const info = new google.maps.InfoWindow({
-                    content: '<h5>' + event_info.title + '</h5>'
-                    + '<h6>' + moment(event_info.date).format('l LT') + '</h6>'
-                    + (event_info.description ? '<p>' + event_info.description + '</p>' : '')
-                    + (event_info.link ? '<a href=\'' + event_info.link + '\'>More Info</a>' : '')
-                });
-                const marker = new google.maps.Marker({
-                    map: map,
-                    position: event_info.location,
-                    title: event_info.title
-                });
-                marker.addListener('click', function (e) {
-                    info.open(map, marker);
-                    info.setPosition(e.latLng, e.latLng);
-                });
+                if (moment(event_info.date) >= moment().startOf('day')) {
+                    const info = new google.maps.InfoWindow({
+                        content: '<h5>' +
+                        event_info.title +
+                        '</h5>' +
+                        '<h6>' +
+                        moment(event_info.date).format('l LT') +
+                        '</h6>' +
+                        (event_info.description ? '<p>' + event_info.description + '</p>' : '') +
+                        (event_info.link ? '<a href=\'' + event_info.link + '\'>More Info</a>' : '')
+                    });
+                    const marker = new google.maps.Marker({
+                        map: map,
+                        position: event_info.location,
+                        title: event_info.title
+                    });
+                    marker.addListener('click',
+                        function (e) {
+                            info.open(map, marker);
+                            info.setPosition(e.latLng, e.latLng);
+                        });
+                }
             });
         });
 }

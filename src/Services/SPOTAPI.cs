@@ -27,7 +27,7 @@ namespace GoldenForCongress.Services
             _newDB = dbFac;
             _httpClient = httpClient;
             _env = env;
-            _url = $"https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/{config["SPOT_FEED_ID"]}/latest.json?feedPassword={config["SPOT_KEY"]}";
+            _url = $"https://api.findmespot.com/spot-main-web/consumer/rest-api/2.0/public/feed/{config["SPOT_FEED_ID"]}/message.json?feedPassword={config["SPOT_KEY"]}";
 
 #pragma warning disable 4014
             Start();
@@ -36,6 +36,9 @@ namespace GoldenForCongress.Services
 
         public async Task Start()
         {
+            if (Running)
+                return;
+
             Running = true;
             while (Running)
             {
@@ -49,11 +52,11 @@ namespace GoldenForCongress.Services
                     var result = await _httpClient.GetStringAsync(_url);
                     _lastChecked = now;
 
-                    var message = JObject.Parse(result)["response"]["feedMessageResponse"]["messages"]["message"];
+                    var message = JObject.Parse(result)["response"]["feedMessageResponse"]["messages"]["message"][0];
                     var location = new Location
                     {
                         ID = Guid.NewGuid(),
-                        Time = DateTime.Parse("1/1/1970").AddSeconds(message["unixTime"].Value<long>()).ToLocalTime(),
+                        Time = DateTime.Parse(message["dateTime"].Value<string>()),
                         Position = $"{{ lat: {message["latitude"]}, lng: {message["longitude"]} }}"
                     };
                     await db.AddAsync(location);
@@ -77,6 +80,7 @@ namespace GoldenForCongress.Services
         public void Stop()
         {
             Running = false;
+            _lastChecked = new DateTime();
         }
     }
 }

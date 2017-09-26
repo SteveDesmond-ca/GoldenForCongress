@@ -8,49 +8,49 @@ new Vue({
         events: []
     },
     methods: {
-        getRoute: function() {
+        getRoute: function () {
             const app = this;
             axios.get('route.json')
-                .then(function(response) {
+                .then(function (response) {
                     app.route = app.sortedRoute(response.data);
                 });
         },
-        sortedRoute: function(route) {
+        sortedRoute: function (route) {
             return route
                 .filter(function (section) {
-                    return moment(section.date) > moment();
+                    return moment(section.date) >= moment().startOf('day');
                 })
                 .sort(function (a, b) {
-                return a.date < b.date
-                    ? -1
-                    : a.date > b.date
-                    ? 1
-                    : 0;
-            });
+                    return a.date < b.date
+                        ? -1
+                        : a.date > b.date
+                            ? 1
+                            : 0;
+                });
         },
 
-        getMedia: function() {
+        getMedia: function () {
             const app = this;
             axios.get('media.json')
-                .then(function(response) {
+                .then(function (response) {
                     app.media = app.sortedMedia(response.data);
                 });
         },
-        sortedMedia: function(media) {
-            return media.sort(function(a, b) {
+        sortedMedia: function (media) {
+            return media.sort(function (a, b) {
                 return a.date > b.date
                     ? -1
                     : a.date < b.date
-                    ? 1
-                    : 0;
+                        ? 1
+                        : 0;
             });
         },
         displayMediaType: function (type) {
             switch (type) {
-            case 0: return 'audio';
-            case 1: return 'video';
-            case 2: return 'image';
-            case 3: return 'text';
+                case 0: return 'audio';
+                case 1: return 'video';
+                case 2: return 'image';
+                case 3: return 'text';
             }
             return 'unknown';
         },
@@ -58,25 +58,25 @@ new Vue({
         getEvents: function () {
             const app = this;
             axios.get('events.json')
-                .then(function(response) {
+                .then(function (response) {
                     app.events = app.sortedEvents(response.data);
                 });
         },
-        sortedEvents: function(events) {
+        sortedEvents: function (events) {
             return events
-                .filter(function(e) {
-                    return moment(e.date) > moment();
+                .filter(function (e) {
+                    return moment(e.date) >= moment().startOf('day');
                 })
                 .sort(function (a, b) {
-                return a.date < b.date
-                    ? -1
-                    : a.date > b.date
-                    ? 1
-                    : 0;
-            });
+                    return a.date < b.date
+                        ? -1
+                        : a.date > b.date
+                            ? 1
+                            : 0;
+                });
         }
     },
-    mounted: function() {
+    mounted: function () {
         this.getRoute();
         this.getMedia();
         this.getEvents();

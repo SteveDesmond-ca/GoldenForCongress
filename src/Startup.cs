@@ -48,6 +48,9 @@ namespace GoldenForCongress
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+#pragma warning disable 4014
+            app.ApplicationServices.GetService<SPOTAPI>().Start();
+#pragma warning restore 4014
             app.UseDeveloperExceptionPage();
 
             app.UseDefaultFiles();
