@@ -9,14 +9,29 @@
     <script type="text/javascript" src="https://unpkg.com/vue@2.4.2/dist/vue.min.js"></script>
     <script type="text/javascript" src="map-utils.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
     <nav class="navbar navbar-expand-sm container justify-content-between text-center">
-        <img class="float-left navbar-brand" src="https://goldenforcongress.com/wp-content/uploads/2017/08/GoldenforCongress_Logo_png-e1505534766900.png" />
-        <h2 class="d-none d-sm-block">NY23 On Foot</h2>
-        <a href="https://www.goldenforcongress.com/">Back <span class="d-none d-md-block">to Main Site</span></a>
+        <a href="https://goldenforcongress.com/">
+            <img class="float-left navbar-brand" src="https://goldenforcongress.com/wp-content/uploads/2017/08/GoldenforCongress_Logo_png-e1505534766900.png" />
+        </a>
+        <ul id="menu-primary" class="nav navbar-nav d-none d-md-block">
+            <li><a title="Home" href="https://goldenforcongress.com/">Home</a></li>
+            <li><a title="District Run" href="https://goldenforcongress.com/district-run/">District Run</a></li>
+            <li><a title="Why Me" href="https://goldenforcongress.com/why-me/">Why Me</a></li>
+            <li><a title="The Do List" href="https://goldenforcongress.com/the-do-list/">The Do List</a></li>
+            <li><a title="Contact" href="https://goldenforcongress.com/contact/">Contact</a></li>
+            <li><a title="Volunteer" href="https://goldenforcongress.com/volunteer/">Volunteer</a></li>
+        </ul>
+        <div class="donate-button pull-right d-none d-md-block">
+            <a href="https://act.myngp.com/Forms/4108769465957485312" target="_blank">Contribute</a>
+        </div>
+        <div class="mobile-donate-button d-md-none">
+            <a href="https://goldenforcongress.com/the-do-list/"><i class="fa fa-usd"></i></a>
+        </div>
     </nav>
     <div class="container-fluid">
         <div id="map"></div>

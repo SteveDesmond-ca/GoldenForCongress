@@ -1,4 +1,35 @@
-﻿#map {
+﻿#menu-primary li {
+    padding: 0 15px;
+    display: inline-block;
+}
+
+    #menu-primary li a {
+        color: #4c4c4c;
+    }
+
+    #menu-primary li a:hover {
+        color: #ef4836;
+        text-decoration: none;
+    }
+
+.donate-button a {
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: #ef4836;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 30px;
+}
+
+.mobile-donate-button a {
+    color: #fff;
+    background-color: #ef4836;
+    border: 0;
+    border-radius: 0;
+    padding: 7px 18px;
+}
+
+#map {
     height: calc(100vw / 1.6);
     max-height: calc(100vh - 200px);
     width: 100%;
