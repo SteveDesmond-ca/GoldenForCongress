@@ -55,7 +55,9 @@
                     <h5>{{m.title}}</h5>
                     <h6>{{moment(m.date).format('l')}}</h6>
                     <p v-if="m.description">{{m.description}}</p>
-                    <iframe class="video" v-bind:src="m.embedded_content"></iframe>
+                    <iframe v-if="m.media_type == 0 || m.media_type == 1" class="video" v-bind:src="m.embedded_content"></iframe>
+                    <img v-if="m.media_type == 2" v-bind:src="m.embedded_content" />
+                    <a v-if="m.media_type == 3" href="{{m.embedded_content}}" target="_blank">Read More</a>
                 </div>
             </div>
             <div class="col-sm-4">
