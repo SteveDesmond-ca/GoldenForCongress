@@ -32,7 +32,7 @@ function showDistrictOverlay() {
 }
 
 function showRoute() {
-    axios.get('route.json?' + new Date().getTime())
+    axios.get('route.json')
         .then(function (response) {
             response.data.forEach(function (section) {
                 const info = new google.maps.InfoWindow({
@@ -53,14 +53,16 @@ function showRoute() {
 }
 
 function showMedia() {
-    axios.get('media.json?' + new Date().getTime())
+    axios.get('media.json')
         .then(function (response) {
             response.data.forEach(function (media) {
                 const info = new google.maps.InfoWindow({
-                    content: '<h5>' + media.title + '</h5>'
+                    content: (media.title ? '<h5>' + media.title + '</h5>' : '')
                     + '<h6>' + moment(media.date).format('l LT') + '</h6>'
                     + (media.description ? '<p>' + media.description + '</p>' : '')
-                    + '<iframe src=\'' + media.embedded_content + '\' frameborder=\'0\'></iframe>'
+                    + (media.media_type === 0 || media.media_type === 1 ? '<iframe src="' + media.embedded_content + '" frameborder="0"></iframe>' : '')
+                    + (media.media_type === 2 ? '<img src="' + media.embedded_content + '" />' : '')
+                    + (media.media_type === 3 ? '<a href="' + media.embedded_content + '">Read More</a>' : '')
                 });
                 const marker = new google.maps.Marker({
                     map: map,
@@ -79,7 +81,7 @@ function showMedia() {
 }
 
 function showEvents() {
-    axios.get('events.json?' + new Date().getTime())
+    axios.get('events.json')
         .then(function (response) {
             response.data.forEach(function (event_info) {
                 if (moment(event_info.date) >= moment().startOf('hour')) {
@@ -110,7 +112,7 @@ function showEvents() {
 
 var ian;
 function updatePosition() {
-    axios.get('ian.json?' + new Date().getTime())
+    axios.get('ian.json')
         .then(function (response) {
             const location = response.data;
             const info = new google.maps.InfoWindow({
