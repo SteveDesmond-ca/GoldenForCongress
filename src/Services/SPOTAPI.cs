@@ -56,7 +56,7 @@ namespace GoldenForCongress.Services
                     var location = new Location
                     {
                         ID = Guid.NewGuid(),
-                        Time = DateTime.Parse(message["dateTime"].Value<string>()),
+                        Time = DateTime.Parse("1/1/1970").AddSeconds(message["unixTime"].Value<long>()).ToLocalTime(),
                         Position = $"{{ lat: {message["latitude"]}, lng: {message["longitude"]} }}"
                     };
                     await db.AddAsync(location);
