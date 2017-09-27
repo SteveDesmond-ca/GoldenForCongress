@@ -50,19 +50,20 @@
     width: 100%;
 }
 
+
+img {
+    max-width: 100%;
+}
+
 .card {
     padding: 10px;
     margin: 15px 0;
 }
 
-    .card img {
-        width: 100%;
-    }
-
-    .card iframe.video {
-        width: 100%;
-        height: calc(33vw / 1.6);
-    }
+iframe.video {
+    max-width: 100%;
+    height: calc(33vw / 1.6);
+}
 
 @media (max-width: 575px) {
     .video {
