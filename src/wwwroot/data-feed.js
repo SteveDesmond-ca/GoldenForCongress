@@ -65,7 +65,7 @@ new Vue({
         sortedEvents: function (events) {
             return events
                 .filter(function (e) {
-                    return moment(e.date) >= moment().startOf('day');
+                    return moment(e.date) >= moment().startOf('hour');
                 })
                 .sort(function (a, b) {
                     return a.date < b.date

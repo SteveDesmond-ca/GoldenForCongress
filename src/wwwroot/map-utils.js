@@ -82,7 +82,7 @@ function showEvents() {
     axios.get('events.json?' + new Date().getTime())
         .then(function (response) {
             response.data.forEach(function (event_info) {
-                if (moment(event_info.date) >= moment().startOf('day')) {
+                if (moment(event_info.date) >= moment().startOf('hour')) {
                     const info = new google.maps.InfoWindow({
                         content: '<h5>' +
                         event_info.title +
