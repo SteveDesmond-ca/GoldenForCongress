@@ -1,4 +1,7 @@
-﻿#menu-primary li {
+﻿.navbar img {
+    height: 40px;
+}
+#menu-primary li {
     padding: 0 15px;
     display: inline-block;
 }
