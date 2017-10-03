@@ -56,7 +56,7 @@
 
 
 img {
-    max-width: 100%;
+    width: 100%;
 }
 
 .card {
@@ -65,7 +65,7 @@ img {
 }
 
 iframe.video {
-    max-width: 100%;
+    width: 100%;
     height: calc(33vw / 1.6);
 }
 
