@@ -60,7 +60,7 @@ function showMedia() {
                     content: (media.title ? '<h5>' + media.title + '</h5>' : '')
                     + '<h6>' + moment(media.date).format('l LT') + '</h6>'
                     + (media.description ? '<p>' + media.description + '</p>' : '')
-                    + (media.media_type === 0 || media.media_type === 1 ? '<iframe src="' + media.embedded_content + '" frameborder="0"></iframe>' : '')
+                    + (media.media_type === 0 || media.media_type === 1 ? '<iframe class="video" src="' + media.embedded_content + '" frameborder="0"></iframe>' : '')
                     + (media.media_type === 2 ? '<img src="' + media.embedded_content + '" />' : '')
                     + (media.media_type === 3 ? '<a href="' + media.embedded_content + '">Read More</a>' : '')
                 });

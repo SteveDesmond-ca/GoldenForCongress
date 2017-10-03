@@ -1,6 +1,7 @@
 ﻿.navbar img {
     height: 40px;
 }
+
 #menu-primary li {
     padding: 0 15px;
     display: inline-block;
@@ -69,7 +70,7 @@ iframe.video {
 }
 
 @media (max-width: 575px) {
-    .video {
+    iframe.video {
         height: calc(100vw / 1.6);
     }
 }
