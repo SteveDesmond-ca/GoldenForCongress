@@ -17,9 +17,9 @@ new Vue({
         },
         sortedRoute: function (route) {
             return route
-                .filter(function (section) {
-                    return moment(section.date) >= moment().startOf('day');
-                })
+                //.filter(function (section) {
+                //    return moment(section.date) >= moment().startOf('day');
+                //})
                 .sort(function (a, b) {
                     return a.date < b.date
                         ? -1
