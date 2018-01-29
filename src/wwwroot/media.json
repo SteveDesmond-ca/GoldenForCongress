@@ -1,0 +1,590 @@
+[
+  {
+    "id": "560b0d83-46a3-439f-b501-052036313882",
+    "date": "2017-10-04T10:55:00",
+    "location": {
+      "lat": 42.0804315,
+      "lng": -76.3545322
+    },
+    "title": "Owego to Waverly",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22256806_370411683392689_7196562747390843866_o.jpg?oh=5c25d5bcad9920d7e2264340d3040a2c&oe=5A7D18F1"
+  },
+  {
+    "id": "f0525e37-b792-4426-ac5d-0d735053c363",
+    "date": "2017-09-26T14:00:00",
+    "location": {
+      "lat": 42.857308,
+      "lng": -77.021082999999976
+    },
+    "title": "Red Jacket Orchards",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22046550_367551723678685_1580564648510197791_n.jpg?oh=02ef33b79a270e8fba42222b8213853f&oe=5A3E5BD5"
+  },
+  {
+    "id": "e79fbc3d-e508-4791-86f0-1d57472713d9",
+    "date": "2017-10-05T15:53:00",
+    "location": {
+      "lat": 42.102391999999988,
+      "lng": -76.261257
+    },
+    "title": "The Walk-Up Gallery & Studio Space",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370949120005612/"
+  },
+  {
+    "id": "e3ffbd32-e67b-49f7-b815-23bd9648dd80",
+    "date": "2017-10-24T16:10:00",
+    "location": {
+      "lat": 42.4892785,
+      "lng": -79.336242999999968
+    },
+    "title": "Hello, Lake Erie",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22728843_378249535942237_1013872070868547430_n.jpg?oh=ed762dca0e60c5bb73138c8db9446839&oe=5A6CEB47"
+  },
+  {
+    "id": "81b2c137-c61d-491c-a7c1-28b4d42a1cc7",
+    "date": "2017-10-23T01:01:00",
+    "location": {
+      "lat": 42.1441654,
+      "lng": -77.058068100000014
+    },
+    "title": null,
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22555268_377621992671658_1866834078141301478_n.jpg?oh=35fa1a630c1f24a56c96168b4fa4c0e6&oe=5A6D2200"
+  },
+  {
+    "id": "526ac71e-2386-43c5-ace5-3265a16230a9",
+    "date": "2017-10-04T11:36:00",
+    "location": {
+      "lat": 42.879326,
+      "lng": -76.982618
+    },
+    "title": "Incubator Kitchen",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370411646726026/"
+  },
+  {
+    "id": "93324105-c0e6-4471-bc35-36285faaeb6f",
+    "date": "2017-10-13T15:00:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": "NY23 Straw Poll",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/373811436386047/"
+  },
+  {
+    "id": "3d56fe38-a9d3-4e63-8a25-3c4a06077cf3",
+    "date": "2017-10-03T19:00:00",
+    "location": {
+      "lat": 42.468362,
+      "lng": -77.966904
+    },
+    "title": "Ian Golden - District Run - Congressional District 23, New York",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370078850092639/"
+  },
+  {
+    "id": "e3c3c34a-51d9-4fc7-b1aa-45c5e10da48b",
+    "date": "2017-09-28T20:00:00",
+    "location": {
+      "lat": 42.1420801,
+      "lng": -77.048212799999988
+    },
+    "title": "Meet the Candidates Forum",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22042202_368315136935677_2276947127831781786_o.jpg?oh=3c8f13b80ac939a23f25c8e060d2421f&oe=5A81D270"
+  },
+  {
+    "id": "eccc934e-35cd-400a-9b04-48a8d2e85376",
+    "date": "2017-10-08T21:15:00",
+    "location": {
+      "lat": 42.48195,
+      "lng": -76.7527589
+    },
+    "title": "Hawk Meadow Farm",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/372279583205899/"
+  },
+  {
+    "id": "3b933351-5c38-4dd5-853b-48f93437721f",
+    "date": "2017-10-23T17:23:00",
+    "location": {
+      "lat": 42.1188683,
+      "lng": -79.1962512
+    },
+    "title": "Jamestown Skate Products",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/378627845904406/"
+  },
+  {
+    "id": "5583bc09-1fb6-471c-833e-4b4ddc3f624b",
+    "date": "2017-10-23T01:01:00",
+    "location": {
+      "lat": 42.0970023,
+      "lng": -79.235325900000021
+    },
+    "title": "Jamestown, NY",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22788842_377621889338335_6938572522039068345_n.jpg?oh=8051d877a4f51695e1a121467aee4a4a&oe=5AAA637B"
+  },
+  {
+    "id": "22312b5d-27a5-45b2-a2f3-4f315dea1fb2",
+    "date": "2017-09-26T19:13:00",
+    "location": {
+      "lat": 42.6609026,
+      "lng": -77.05385769999998
+    },
+    "title": "Hello Penn Yan",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/21994397_367601647007026_6636256647570543810_o.jpg?oh=f8eccb64b73eafc9a479ca8a562acfec&oe=5A45B4D4"
+  },
+  {
+    "id": "3df57603-408d-46ed-a13f-540b8b4a1933",
+    "date": "2017-10-05T11:09:00",
+    "location": {
+      "lat": 42.4382019,
+      "lng": -76.863392200000021
+    },
+    "title": "The Elf in the Oak",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370876660012858/"
+  },
+  {
+    "id": "edd56557-bcb7-4f77-b6ff-5531a1dc3663",
+    "date": "2017-10-23T01:01:00",
+    "location": {
+      "lat": 42.0900647,
+      "lng": -78.4941887
+    },
+    "title": "Allegany, NY",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22728961_377621742671683_2658736822112946914_n.jpg?oh=1c7123e117c3235f24a48ba3de9f59fb&oe=5A6D57DB"
+  },
+  {
+    "id": "27d7125d-4234-4789-8792-5dcf0dfe17cb",
+    "date": "2017-10-05T09:55:00",
+    "location": {
+      "lat": 42.1729026,
+      "lng": -76.3096984
+    },
+    "title": "Route 96 Power & Paddle",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370854910015033/"
+  },
+  {
+    "id": "1f9bce80-556f-4d3e-a5f0-60a46836c897",
+    "date": "2017-10-23T01:01:00",
+    "location": {
+      "lat": 42.083639,
+      "lng": -78.429927000000021
+    },
+    "title": "Olean, NY",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22780234_377619216005269_3644269153075702866_n.jpg?oh=e2db49a61f5526a2f615e82a898a2f33&oe=5A7B35F4"
+  },
+  {
+    "id": "e78528a6-07d3-4d2d-b00d-62b0ce82d880",
+    "date": "2017-10-05T16:59:00",
+    "location": {
+      "lat": 42.4396969,
+      "lng": -76.4950781
+    },
+    "title": "Rev: Ithaca Startup Works",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370976443336213/"
+  },
+  {
+    "id": "757fe406-5b3d-4e76-97eb-7094755d49ce",
+    "date": "2017-10-22T14:29:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": "Ian Speaking at the NY23 Straw Poll",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22552919_377534299347094_512765696365198895_o.jpg?oh=72872df077b7dd4720a8761657be6ba6&oe=5A6A7FE3"
+  },
+  {
+    "id": "5a1326ad-c4c2-4793-94ce-7644e3155322",
+    "date": "2017-09-25T20:43:00",
+    "location": {
+      "lat": 42.6112189,
+      "lng": -88.4837329
+    },
+    "title": "Kickoff Party",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/21768973_367322647034926_46978861344562002_o.jpg?oh=04156ee772f8f826ee4763a259201fff&oe=5A885063"
+  },
+  {
+    "id": "43a6a8cb-fd45-4ba9-bce0-77b502ab4ec0",
+    "date": "2017-09-28T09:40:00",
+    "location": {
+      "lat": 42.380838999999987,
+      "lng": -76.871684000000016
+    },
+    "title": "Day 3 Begins",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22041956_368138483620009_2788812131159630039_o.jpg?oh=3fda70a59435b65c0618adf87c9225cf&oe=5A837C1C"
+  },
+  {
+    "id": "5a135849-c830-4477-9a9e-7a53f7cc48c9",
+    "date": "2017-10-04T13:04:00",
+    "location": {
+      "lat": 42.194373,
+      "lng": -76.313343000000032
+    },
+    "title": "Iron Kettle Farm",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370444830056041/"
+  },
+  {
+    "id": "c6ef6832-24b6-42af-bb36-7a7148978f7f",
+    "date": "2017-10-21T13:05:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": " Western Southern Tier 23rd Democratic Congressional Straw Poll",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22553004_377031759397348_5254398973682828353_o.jpg?oh=e35119ea604ee51ad8cf7695e90f73a8&oe=5AAC0A2A"
+  },
+  {
+    "id": "ddb99061-258f-4464-8bf1-7e25ca24857f",
+    "date": "2017-10-02T12:00:00",
+    "location": {
+      "lat": 42.2363933,
+      "lng": -76.317413999999985
+    },
+    "title": "\"Easy Day\" with Indy",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22195410_369842840116240_2629144743551072014_n.jpg?oh=acdc2ddea5fb0e4072ac274b57f0f50a&oe=5A4187E3"
+  },
+  {
+    "id": "3d49f2b7-f9c5-4b68-8354-81b39a6028fd",
+    "date": "2017-09-26T15:09:00",
+    "location": {
+      "lat": 42.7685696,
+      "lng": -77.010732800000028
+    },
+    "title": "On the Road",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22046569_367551693678688_8688129458899311015_n.jpg?oh=30b01573bbfb4e8a2892222041112156&oe=5A4ECDD2"
+  },
+  {
+    "id": "1c4d9057-b2ed-47a5-b84d-8807ef9d9134",
+    "date": "2017-10-03T10:00:00",
+    "location": {
+      "lat": 42.194373,
+      "lng": -76.313343000000032
+    },
+    "title": "Iron Kettle Farm",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22228216_370074290093095_6146663519336278584_n.jpg?oh=e32b48140fd25e9b68a4bb37e52cb4ef&oe=5A47AE30"
+  },
+  {
+    "id": "42ccf3bc-0839-4e89-9b09-8971d010b3d2",
+    "date": "2017-10-04T12:04:00",
+    "location": {
+      "lat": 42.68053,
+      "lng": -76.975236999999993
+    },
+    "title": "Spotted Duck Creamery",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370419510058573/"
+  },
+  {
+    "id": "44cbc39f-172e-4c56-a9b0-8d45173f0faf",
+    "date": "2017-10-05T09:29:00",
+    "location": {
+      "lat": 42.857308,
+      "lng": -77.021082999999976
+    },
+    "title": "Red Jacket Orchards",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370845086682682/"
+  },
+  {
+    "id": "8c0f197c-3c70-489b-a93e-a20d09ef85f1",
+    "date": "2017-10-03T20:13:00",
+    "location": {
+      "lat": 42.8681432,
+      "lng": -76.982592599999975
+    },
+    "title": "SmallGrid",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370197696747421/"
+  },
+  {
+    "id": "88614318-ad6c-460c-a5d9-a3f2a058057c",
+    "date": "2017-10-06T19:29:00",
+    "location": {
+      "lat": 42.000939,
+      "lng": -76.538739999999962
+    },
+    "title": "Waverly, NY",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22281907_371456353288222_5708602447861258587_n.jpg?oh=014695a6087dfb6b0bd768c7942c847d&oe=5A420D60"
+  },
+  {
+    "id": "00e41576-3fb1-4ef4-af12-a6ad7b8a70a7",
+    "date": "2017-10-04T12:15:00",
+    "location": {
+      "lat": 42.6628777,
+      "lng": -77.051851199999987
+    },
+    "title": "Two Can Dan's",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370421976724993/"
+  },
+  {
+    "id": "93702369-6066-477f-aa25-ac32567d7f17",
+    "date": "2017-10-04T11:23:00",
+    "location": {
+      "lat": 42.8792078,
+      "lng": -76.982646100000011
+    },
+    "title": "Waltzing Matilda Sandals",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370416343392223/"
+  },
+  {
+    "id": "2eb6cfaa-9e88-4df6-8750-b40fde38f659",
+    "date": "2017-10-23T01:01:00",
+    "location": {
+      "lat": 42.1578412,
+      "lng": -78.715031099999976
+    },
+    "title": "Salamanca, NY",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22688449_377619322671925_4252767370000825745_n.jpg?oh=9a6342e7b767c000a618e16434578c30&oe=5A6669F5"
+  },
+  {
+    "id": "d4c30265-c1ef-4c00-9cb6-b673adeb2e4a",
+    "date": "2017-10-04T12:27:00",
+    "location": {
+      "lat": 42.4918901,
+      "lng": -76.870095100000015
+    },
+    "title": "Hector Handmade",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370430813390776/"
+  },
+  {
+    "id": "c04d7d12-ba5d-4a45-8362-b8604a0c4896",
+    "date": "2017-09-29T13:58:00",
+    "location": {
+      "lat": 42.509371,
+      "lng": -76.792043999999976
+    },
+    "title": "On the Trail",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22050333_369249910175533_2756961302035103021_n.jpg?oh=a1aa9ecc8e74aa98f2609fa7a0f1a91d&oe=5A4104AB"
+  },
+  {
+    "id": "12cb699c-71ed-4f17-b199-bb2613201d44",
+    "date": "2017-10-22T17:35:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": "Ian' Speech at the NY23 Straw Poll",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/377470182686839/"
+  },
+  {
+    "id": "94af9bde-6986-433a-b950-c8823b64e881",
+    "date": "2017-10-24T14:14:00",
+    "location": {
+      "lat": 42.209774,
+      "lng": -79.466844499999979
+    },
+    "title": "Chautauqua Progressive Action",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22769955_378213799279144_4865504836939843236_o.jpg?oh=3ae871923ef630206c339d0ad5b1d23b&oe=5AAB258F"
+  },
+  {
+    "id": "8cc64460-aa20-4154-8c25-d7aeb8846716",
+    "date": "2017-09-27T11:57:00",
+    "location": {
+      "lat": 42.6611357,
+      "lng": -77.05238959999997
+    },
+    "title": "Day 2 Underway",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22095927_367813623652495_5255655687263709207_o.jpg?oh=5ea6abe061eebc9c57fe8ea7f0c53acc&oe=5A469841"
+  },
+  {
+    "id": "e5f4d170-897e-4da3-b0cd-d81f4adf5c92",
+    "date": "2017-10-11T15:33:00",
+    "location": {
+      "lat": 42.1437847,
+      "lng": -77.0555693
+    },
+    "title": "Poppleton Bakery and Café",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/373344936432697/"
+  },
+  {
+    "id": "35846e6b-68b5-4776-a7dd-d93886630ad2",
+    "date": "2017-09-27T19:15:00",
+    "location": {
+      "lat": 42.3806287,
+      "lng": -76.873292100000015
+    },
+    "title": "Watkins Glen Mural",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22007611_367944286972762_4353711849658671719_n.jpg?oh=48ced2cbe8ef9dfca590465bdb828aa1&oe=5A47CC72"
+  },
+  {
+    "id": "d76393b3-36e8-40ba-95e1-dbe4271d8890",
+    "date": "2017-10-21T13:05:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": "Treats at the NY23 Straw Poll",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22555215_377534496013741_8375393845931393274_n.jpg?oh=263780b5a48fc5054e8c0af22b9a58fe&oe=5A7C0D0A"
+  },
+  {
+    "id": "a54f5773-46ad-4b6a-a3e3-ddbdc08fb623",
+    "date": "2017-10-06T09:46:00",
+    "location": {
+      "lat": 42.091592899999988,
+      "lng": -76.803051900000014
+    },
+    "title": "Christina",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/371054129995111/"
+  },
+  {
+    "id": "1fc84462-79d6-449b-835d-ddc4b1a1a39e",
+    "date": "2017-09-28T14:57:00",
+    "location": {
+      "lat": 42.5261615,
+      "lng": -76.796578000000011
+    },
+    "title": "End of Day 3",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22046881_368242696942921_5134106343263910767_n.jpg?oh=afecb5c6ce71ded5c1b7edaab0f7518b&oe=5A840A98"
+  },
+  {
+    "id": "10c0eaf6-4c24-46a8-90a2-e32e955d2a03",
+    "date": "2017-10-03T09:00:00",
+    "location": {
+      "lat": 42.18,
+      "lng": -76.32
+    },
+    "title": "WBNG-12 Interview",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22140925_370074340093090_2869445367643460179_n.jpg?oh=1ae2d09dd35a0ccdfe6b5973e2b23c7c&oe=5A4FD3BB"
+  },
+  {
+    "id": "03946ffd-10e5-4288-b3bb-e3c21e36b11d",
+    "date": "2017-10-04T01:13:00",
+    "location": {
+      "lat": 42.8673047,
+      "lng": -76.981370700000014
+    },
+    "title": "Geneva Bicycle Center",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370208503413007/"
+  },
+  {
+    "id": "2cf64c8e-a02d-4e86-8747-f2fc02c61693",
+    "date": "2017-10-04T14:04:00",
+    "location": {
+      "lat": 42.5220801,
+      "lng": -76.855728800000009
+    },
+    "title": "Muddy Fingers Farm",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370448450055679/"
+  },
+  {
+    "id": "e4d1898f-eb3a-496d-ad3b-f7066c49f730",
+    "date": "2017-10-18T19:17:00",
+    "location": {
+      "lat": 42.112801999999988,
+      "lng": -78.415863
+    },
+    "title": "Olean Mayoral Debate",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t31.0-8/22519767_375986066168584_1538089347371296916_o.jpg?oh=8f46577284f06a1f3980bbef2b337bc2&oe=5AAA556C"
+  },
+  {
+    "id": "e60f53b8-8653-4c26-a8e7-f98b85f2b5ac",
+    "date": "2017-10-05T10:44:00",
+    "location": {
+      "lat": 42.5422939,
+      "lng": -76.6660589
+    },
+    "title": "Sam & Dan",
+    "description": null,
+    "media_type": 1,
+    "embedded_content": "https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/GoldenForCongress/videos/370850516682139/"
+  },
+  {
+    "id": "fdae5397-1cbb-4c9c-abf8-fddf81a658b5",
+    "date": "2017-09-27T15:48:00",
+    "location": {
+      "lat": 42.500105,
+      "lng": -76.923844799999983
+    },
+    "title": "Seneca Lake",
+    "description": null,
+    "media_type": 2,
+    "embedded_content": "https://scontent-lga3-1.xx.fbcdn.net/v/t1.0-9/22008057_367944390306085_6387590545044792288_n.jpg?oh=c38aa7ab251bfa4524eeb5478ee35a13&oe=5A3D207B"
+  }
+]

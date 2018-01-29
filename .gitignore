@@ -287,8 +287,4 @@ __pycache__/
 *.odx.cs
 *.xsd.cs
 
-ian.json
-media.json
-route.json
 *.DotSettings
-events.json

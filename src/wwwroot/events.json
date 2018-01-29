@@ -1,0 +1,200 @@
+[
+  {
+    "id": "55c13dac-7115-43b8-9467-172e9bd69cbf",
+    "date": "2017-10-03T10:30:00",
+    "location": {
+      "lat": 42.1729026,
+      "lng": -76.3096984
+    },
+    "title": "Route 96 Power & Paddle",
+    "description": "1035 Owego Rd, Candor, NY",
+    "link": null
+  },
+  {
+    "id": "89eb0c29-ca30-4f44-b2db-1a86c7f85474",
+    "date": "2017-10-05T17:00:00",
+    "location": {
+      "lat": 42.1431648,
+      "lng": -77.054337199999964
+    },
+    "title": "Corning City Democratic Committee Fall Fundraiser",
+    "description": "Tony R's Steak and Seafood, 2 E Market St., Corning, NY",
+    "link": "https://www.facebook.com/events/682273531966532/"
+  },
+  {
+    "id": "0613b954-a168-434b-b3e2-223c16645a60",
+    "date": "2017-10-04T17:30:00",
+    "location": {
+      "lat": 42.084293,
+      "lng": -76.769733999999971
+    },
+    "title": "Chemung County Democratic Fundraiser",
+    "description": "Hill Top Inn, 171 Jerusalem Hill Rd, Elmira, NY; *RSVP By September 27, 2017",
+    "link": "http://www.chemungdems.org/2017-ccdc-annual-dinner/"
+  },
+  {
+    "id": "067c2471-7ac0-4272-8097-48b32e060b5f",
+    "date": "2017-10-03T09:15:00",
+    "location": {
+      "lat": 42.194373,
+      "lng": -76.313343000000032
+    },
+    "title": "Iron Kettle Farm",
+    "description": "707 Owego Rd, Candor, NY",
+    "link": null
+  },
+  {
+    "id": "a62258c2-0f68-43ac-a927-528cf858c719",
+    "date": "2017-10-05T08:00:00",
+    "location": {
+      "lat": 42.000831,
+      "lng": -76.541083000000015
+    },
+    "title": "Breakfast at Becky's Diner",
+    "description": "310 Broad St, Waverly, NY",
+    "link": null
+  },
+  {
+    "id": "49eaa48e-59c3-4c14-a485-5a8a77de98d6",
+    "date": "2017-09-27T19:00:00",
+    "location": {
+      "lat": 42.3816379,
+      "lng": -76.874333900000011
+    },
+    "title": "Dinner at Nickel's Pit BBQ",
+    "description": "205-207 N Franklin Street, Watkins Glen, NY",
+    "link": null
+  },
+  {
+    "id": "c31f2c03-4373-4123-a2a7-64f710ac0ae0",
+    "date": "2017-10-13T18:00:00",
+    "location": {
+      "lat": 42.2545617,
+      "lng": -77.7906223
+    },
+    "title": "Meet and Greet",
+    "description": "Alex's College Spot, 23 N Main St, Alfred, NY",
+    "link": "https://www.facebook.com/events/119128732137941/"
+  },
+  {
+    "id": "305a1723-b7a4-4785-9e14-6d8d116515c0",
+    "date": "2017-09-26T12:00:00",
+    "location": {
+      "lat": 42.857308,
+      "lng": -77.021082999999976
+    },
+    "title": "Lunch at Red Jacket Orchards",
+    "description": "957 Canandaigua Road Geneva, NY",
+    "link": null
+  },
+  {
+    "id": "bd277194-e34b-4a05-93d2-7e43eba02f0c",
+    "date": "2017-11-16T17:00:00",
+    "location": {
+      "lat": 42.4391758,
+      "lng": -76.495961700000009
+    },
+    "title": "Rally with Ian in the Commons!",
+    "description": "215 E. State St, Ithaca, NY",
+    "link": "https://www.facebook.com/events/123878338288362/"
+  },
+  {
+    "id": "28d73527-4bba-4432-b7d8-ad80ee918b3b",
+    "date": "2017-10-03T17:30:00",
+    "location": {
+      "lat": 42.1025961,
+      "lng": -76.2600574
+    },
+    "title": "Dinner at Las Chicas Taqueria",
+    "description": "208 Front St, Owego, NY",
+    "link": null
+  },
+  {
+    "id": "585eff52-70df-4455-8086-b9492c876692",
+    "date": "2017-10-04T09:00:00",
+    "location": {
+      "lat": 42.1028132,
+      "lng": -76.261127600000009
+    },
+    "title": "Breakfast at The Owego Kitchen ",
+    "description": "13 Lake St, Owego, NY",
+    "link": null
+  },
+  {
+    "id": "00513b78-4afd-4b4c-bf97-ba6ec7841a5c",
+    "date": "2017-10-02T12:00:00",
+    "location": {
+      "lat": 42.233905,
+      "lng": -76.342235000000016
+    },
+    "title": "Lunch at Punk's Place",
+    "description": "21 Mill St, Candor, NY",
+    "link": null
+  },
+  {
+    "id": "24669393-c627-4781-b866-be0d1597f874",
+    "date": "2017-10-06T17:00:00",
+    "location": {
+      "lat": 42.1328536,
+      "lng": -76.945964099999969
+    },
+    "title": "Dinner at Denny's Sub Shop",
+    "description": "3161 NY-352, Big Flats, NY",
+    "link": ""
+  },
+  {
+    "id": "5575f350-7b1e-4904-a271-c6f916100944",
+    "date": "2017-09-28T13:00:00",
+    "location": {
+      "lat": 42.522232,
+      "lng": -76.853261999999972
+    },
+    "title": "Muddy Finger's Farm",
+    "description": "3895 Dugue Rd, Hector, NY",
+    "link": null
+  },
+  {
+    "id": "4b9efa12-1556-42ff-9609-c79b21d7b219",
+    "date": "2017-10-21T10:00:00",
+    "location": {
+      "lat": 42.1635863,
+      "lng": -78.974366799999984
+    },
+    "title": "Western Southern Tier 23rd Congressional District Straw Poll",
+    "description": "Randolph Fire Hall, 70 Main St., Randolph, NY; $10 Admission, ALL are welcome",
+    "link": null
+  },
+  {
+    "id": "3fc6269d-9f36-4595-b054-d483a7ad602d",
+    "date": "2017-10-14T09:00:00",
+    "location": {
+      "lat": 42.2227289,
+      "lng": -78.032739399999969
+    },
+    "title": "Allegany County Democratic Committee Fundraiser Breakfast",
+    "description": "Belmont American Legion, 29 Schuyler St, Belmont, NY",
+    "link": "http://www.alleganycountydemocrats.org/"
+  },
+  {
+    "id": "6751b211-3fe5-4ca3-9691-e8924e81f8dc",
+    "date": "2017-09-28T12:00:00",
+    "location": {
+      "lat": 42.4382019,
+      "lng": -76.863392200000021
+    },
+    "title": "Lunch at The Elf in the Oak",
+    "description": "4221 NY-414, Burdett, NY",
+    "link": null
+  },
+  {
+    "id": "f13a4a2f-b395-4ae0-ba7f-ee90a43dd023",
+    "date": "2017-09-28T08:30:00",
+    "location": {
+      "lat": 42.380838999999987,
+      "lng": -76.871684000000016
+    },
+    "title": "Breakfast at Toby's Donut Shop",
+    "description": "137 E 4th St, Watkins Glen, NY",
+    "link": null
+  }
+]
