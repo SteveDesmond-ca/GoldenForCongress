@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using GoldenForCongress.Data;
 using GoldenForCongress.Services;
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Rest.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -17,7 +17,7 @@ namespace GoldenForCongress
 {
     public class Startup
     {
-        private static readonly ReadOnlyJsonContractResolver SnakeCaseResolver = new ReadOnlyJsonContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() };
+        private static readonly JsonContractResolver SnakeCaseResolver = new JsonContractResolver(new JsonMediaTypeFormatter()) { NamingStrategy = new SnakeCaseNamingStrategy() };
         public static readonly JsonSerializer SnakeCase = JsonSerializer.CreateDefault(new JsonSerializerSettings { ContractResolver = SnakeCaseResolver });
 
         public Startup(IConfiguration configuration)
